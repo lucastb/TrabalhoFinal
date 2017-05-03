@@ -52,9 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201705012154579_agoravai.cs" />
-    <Compile Include="Migrations\201705012154579_agoravai.Designer.cs">
-      <DependentUpon>201705012154579_agoravai.cs</DependentUpon>
+    <Compile Include="Migrations\201705032001295_laptopdb.cs" />
+    <Compile Include="Migrations\201705032001295_laptopdb.Designer.cs">
+      <DependentUpon>201705032001295_laptopdb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -75,8 +75,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705012154579_agoravai.resx">
-      <DependentUpon>201705012154579_agoravai.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705032001295_laptopdb.resx">
+      <DependentUpon>201705032001295_laptopdb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

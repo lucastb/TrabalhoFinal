@@ -3,7 +3,7 @@ namespace TrabalhoFinal.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class agoravai : DbMigration
+    public partial class laptopdb : DbMigration
     {
         public override void Up()
         {
