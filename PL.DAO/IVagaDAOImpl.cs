@@ -28,7 +28,13 @@ namespace PL.DAO
 
         public int getVagasOcupadas()
         {
-            return est.getVagas() - 1;
+            var vagas = est.getVagas() - 1;
+            if (vagas <= 0)
+            {
+                return 0;
+            }
+            else {
+                return vagas; }
         }
 
         public int getNumVagasDisp()

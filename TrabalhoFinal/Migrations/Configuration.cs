@@ -21,7 +21,7 @@ namespace TrabalhoFinal.Migrations
             {
                 new Vaga { codigo = "854123658985", HoraDeEntrada = DateTime.Parse("5/1/2017 07:00:00 AM",new CultureInfo("en-US")) },
                 new Vaga { codigo = "986574256987", HoraDeEntrada = DateTime.Parse("5/1/2017 07:20:00 AM",new CultureInfo("en-US")) },
-                new Vaga { codigo = "Não Encontrado", HoraDeEntrada = DateTime.Parse("5/1/2017 07:00:00 AM",new CultureInfo("en-US")) },
+               // new Vaga { codigo = "Não Encontrado", HoraDeEntrada = DateTime.Parse("5/1/2017 07:00:00 AM",new CultureInfo("en-US")) },
 
              };
             vagas.ForEach(s => context.Vagas.AddOrUpdate(g => g.codigo, s));

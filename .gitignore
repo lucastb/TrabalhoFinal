@@ -240,3 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/TrabalhoFinal/Migrations/201705032001295_laptopdb.Designer.cs
+/TrabalhoFinal/Migrations/201705032001295_laptopdb.resx
+/TrabalhoFinal/Migrations/201705032001295_laptopdb.cs
