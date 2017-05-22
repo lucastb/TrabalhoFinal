@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,9 @@ namespace PL.Model.POCO
         {
             valor_pago = 0.00;
         }
-
-        public string codigo { get; set; }
+        [Key]
+        public string ticket { get; set; }
+        
         public DateTime dt_hr_entrada { get; set; }
         public DateTime dt_hr_saida { get; set; }
         public string emitido_por { get; set; }
