@@ -9,8 +9,9 @@ namespace PL.Model.POCO
 {
    public class Usuario
     {
-        [Key]
-        public int ID_user { get; set; }
+        
+        
+        public int UsuarioID { get; set; }
         
         public string nome { get; set; }
         public string funcao { get; set; }

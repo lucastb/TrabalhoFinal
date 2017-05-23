@@ -189,10 +189,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BarCodeGeneratorTM.cs" />
+    <Compile Include="Controllers\GeradorDeDataTM.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705230640293_BancoFuncionando100PorCento.cs" />
+    <Compile Include="Migrations\201705230640293_BancoFuncionando100PorCento.Designer.cs">
+      <DependentUpon>201705230640293_BancoFuncionando100PorCento.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -214,6 +220,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\fre3of9x.ttf" />
+    <Content Include="fonts\free3of9.ttf" />
+    <Content Include="fonts\code128.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -285,6 +294,11 @@
       <Project>{a255b532-8ed3-4b01-85e5-f5afffecd37e}</Project>
       <Name>PL.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201705230640293_BancoFuncionando100PorCento.resx">
+      <DependentUpon>201705230640293_BancoFuncionando100PorCento.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

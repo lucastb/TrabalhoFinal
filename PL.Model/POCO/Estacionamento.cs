@@ -13,11 +13,13 @@ namespace PL.Model.POCO
         {
             valor_pago = 0.00;
         }
-        [Key]
+        
+        public int EstacionamentoId { get; set; }
+        
         public string ticket { get; set; }
         
         public DateTime dt_hr_entrada { get; set; }
-        public DateTime dt_hr_saida { get; set; }
+        public DateTime? dt_hr_saida { get; set; }
         public string emitido_por { get; set; }
         public double valor_pago { get; set; }
         public string liberacao_especial { get; set; }
