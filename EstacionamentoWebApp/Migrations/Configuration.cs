@@ -54,6 +54,8 @@ namespace EstacionamentoWebApp.Migrations
             new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.Parse(gd.now(),new CultureInfo("en-US")), emitido_por = "Guichê"},
             new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.Parse(gd.now(),new CultureInfo("en-US")),  dt_hr_saida =  DateTime.Parse(gd.now(),new CultureInfo("en-US")) , emitido_por = "Cancela" },
             new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.Parse(gd.now(),new CultureInfo("en-US")), emitido_por = "Guichê" },
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.Parse(gd.now(),new CultureInfo("en-US")), emitido_por = "Guichê" },
+
             };
 
             Ests.ForEach(s => context.Estacionamentos.AddOrUpdate(f => f.ticket, s));

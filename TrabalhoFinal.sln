@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL.Model", "PL.Model\PL.Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstacionamentoWebApp", "EstacionamentoWebApp\EstacionamentoWebApp.csproj", "{D44C1E66-BCD6-4E87-A74F-FBBDBBF3247D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL.DAO", "PL.DAO\PL.DAO.csproj", "{906A7AA0-AC5F-49F8-8654-108DA1F6F8C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D44C1E66-BCD6-4E87-A74F-FBBDBBF3247D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D44C1E66-BCD6-4E87-A74F-FBBDBBF3247D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D44C1E66-BCD6-4E87-A74F-FBBDBBF3247D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{906A7AA0-AC5F-49F8-8654-108DA1F6F8C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{906A7AA0-AC5F-49F8-8654-108DA1F6F8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{906A7AA0-AC5F-49F8-8654-108DA1F6F8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{906A7AA0-AC5F-49F8-8654-108DA1F6F8C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
