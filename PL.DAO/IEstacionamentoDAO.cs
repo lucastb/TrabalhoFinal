@@ -12,7 +12,7 @@ namespace PL.DAO
     {
         IEnumerable<Estacionamento> getEstacionamentos();
         Estacionamento GetEstacionamentoByID(string cod);
-        void Add(Estacionamento est);
+        Boolean Add(Estacionamento est);
         void Delete(int cod);
         void Update(Estacionamento est);
     }

@@ -16,10 +16,30 @@ namespace PL.DAO
         {
             context = new EstacionamentoContext();
         }
+
+        public Boolean checaNomeExiste(string nome)
+        {
+            var lista = getUsuarios();
+            
+            foreach (Usuario user in lista)
+            {
+                if (user.nome.Equals(nome))
+                {
+                   return true;
+                }
+
+            }
+            return false;
+        }
         public void Add(Usuario usuario)
         {
-            context.Users.Add(usuario);
-            context.SaveChanges();
+            if(checaNomeExiste(usuario.nome) == false)
+            {
+                context.Users.Add(usuario);
+                context.SaveChanges();
+                
+            }
+            return;
         }
 
         public void Delete(int usuarioID)
@@ -41,7 +61,7 @@ namespace PL.DAO
             return true;
         }
 
-
+       
 
         public Usuario GetAUsuarioByID(int userID)
         {
@@ -69,11 +89,12 @@ namespace PL.DAO
         {
             var usuarios = context.Users.ToList();
             return usuarios;
+            
         }
 
         public void Update(Usuario user)
         {
-            throw new NotImplementedException();
+           
         }
     }
 }

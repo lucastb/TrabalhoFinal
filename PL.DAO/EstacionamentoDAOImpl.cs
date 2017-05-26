@@ -6,21 +6,80 @@ using System.Threading.Tasks;
 using PL.Model.POCO;
 using PL.Model;
 
+
 namespace PL.DAO
 {
     public class EstacionamentoDAOImpl : IEstacionamentoDAO
     {
         EstacionamentoContext context;
+        
+        
 
         public EstacionamentoDAOImpl()
         {
             context = new EstacionamentoContext();
         }
-        public void Add(Estacionamento est)
+        public Boolean Add(Estacionamento est)
         {
+            var vagas = getEstacionamentos();
+            foreach(Estacionamento estDaLista in vagas)
+            {
+                if (estDaLista.ticket.Equals(est.ticket))
+                {
+                    return false;
+                }
+            }
             context.Estacionamentos.Add(est);
             context.SaveChanges();
+            return true;
 
+        }
+
+        public void Update(Estacionamento est)
+        {
+           var vagaOriginal = context.Estacionamentos.Find(est.EstacionamentoId);
+            vagaOriginal = est;
+            context.SaveChanges();
+        }
+
+        public void mudarHoraDeSaida(Estacionamento vaga, DateTime saida)
+        {
+            var vagaOriginal = context.Estacionamentos.Find(vaga.EstacionamentoId);
+            if(vagaOriginal != null)
+            {
+                vagaOriginal.dt_hr_saida = saida;
+                context.SaveChanges();
+            }
+        }
+
+        public void liberacaoEspecial(Estacionamento vaga, string motivo)
+        {
+            var vagaOriginal = context.Estacionamentos.Find(vaga.EstacionamentoId);
+            if (vagaOriginal != null)
+            {
+                vagaOriginal.liberacao_especial = motivo;
+                context.SaveChanges();
+            }
+        }
+
+        public void emitidoPor(Estacionamento vaga, string emissor)
+        {
+            var vagaOriginal = context.Estacionamentos.Find(vaga.EstacionamentoId);
+            if (vagaOriginal != null)
+            {
+                vagaOriginal.emitido_por = emissor;
+                context.SaveChanges();
+            }
+        }
+
+        public void valorAPagar(Estacionamento vaga, double valor)
+        {
+            var vagaOriginal = context.Estacionamentos.Find(vaga.EstacionamentoId);
+            if (vagaOriginal != null)
+            {
+                vagaOriginal.valor_pago = valor;
+                context.SaveChanges();
+            }
         }
 
 
@@ -70,9 +129,6 @@ namespace PL.DAO
             return vagas;
         }
 
-        public void Update(Estacionamento est)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

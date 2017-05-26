@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CfgDAOImpl.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="EstacionamentoDAOImpl.cs" />
+    <Compile Include="ICfgDAO.cs" />
     <Compile Include="IEstacionamentoDAO.cs" />
     <Compile Include="IUsuarioDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

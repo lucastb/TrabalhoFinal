@@ -188,9 +188,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BLL\BarCodeGeneratorTM.cs" />
+    <Compile Include="BLL\GeradorDeDataTM.cs" />
+    <Compile Include="BLL\InteracaoEstacionamentoComCFG.cs" />
+    <Compile Include="BLL\InteracaoUsuarioEstacionamento.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BarCodeGeneratorTM.cs" />
-    <Compile Include="Controllers\GeradorDeDataTM.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -290,6 +292,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PL.DAO\PL.DAO.csproj">
+      <Project>{906A7AA0-AC5F-49F8-8654-108DA1F6F8C8}</Project>
+      <Name>PL.DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PL.Model\PL.Model.csproj">
       <Project>{a255b532-8ed3-4b01-85e5-f5afffecd37e}</Project>
       <Name>PL.Model</Name>

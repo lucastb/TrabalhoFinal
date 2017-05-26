@@ -1,5 +1,6 @@
 namespace EstacionamentoWebApp.Migrations
 {
+    using EstacionamentoWebApp.BLL;
     using EstacionamentoWebApp.Controllers;
     using PL.Model.POCO;
     using System;
