@@ -21,9 +21,9 @@ namespace EstacionamentoWebApp.BLL
         public Boolean checaCortesia(string cod)
         {
             var vaga = estDAO.GetEstacionamentoByID(cod);
-            if(checaTempo(cod) == 0)
+            if (checaTempo(cod) == 0)
             {
-                if(clock.diferencaMinutos(DateTime.Now, vaga.dt_hr_entrada) <= 15)
+                if (clock.diferencaMinutos(DateTime.Now, vaga.dt_hr_entrada) <= 15)
                 {
                     return true;
                 }
@@ -44,13 +44,13 @@ namespace EstacionamentoWebApp.BLL
                 return ponderacao;
             }
 
-            if(resultado > 0)
+            if (resultado > 0)
             {
-                    ponderacao = 1;
+                ponderacao = 1;
                 return ponderacao;
             }
 
-            if(resultado == 0)
+            if (resultado == 0)
             {
                 ponderacao = 0;
                 return ponderacao;
@@ -67,6 +67,7 @@ namespace EstacionamentoWebApp.BLL
             return 0;
         }
 
-       
+
 
     }
+}
