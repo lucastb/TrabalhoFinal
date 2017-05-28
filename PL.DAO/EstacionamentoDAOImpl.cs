@@ -19,6 +19,8 @@ namespace PL.DAO
         {
             context = new EstacionamentoContext();
         }
+
+
         public Boolean Add(Estacionamento est)
         {
             var vagas = getEstacionamentos();
@@ -72,7 +74,7 @@ namespace PL.DAO
             }
         }
 
-        public void valorAPagar(Estacionamento vaga, double valor)
+        public void modificarValorAPagar(Estacionamento vaga, double valor)
         {
             var vagaOriginal = context.Estacionamentos.Find(vaga.EstacionamentoId);
             if (vagaOriginal != null)

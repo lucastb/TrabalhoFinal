@@ -30,5 +30,13 @@ namespace EstacionamentoWebApp.BLL
             return true;
         }
 
+        //fazer
+        public Boolean liberarSaida(string cod)  
+        {
+          var ticketParaValidar = estDAO.GetEstacionamentoByID(cod);
+            
+            return true;
+        }
+
     }
 }

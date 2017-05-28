@@ -189,9 +189,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BLL\BarCodeGeneratorTM.cs" />
+    <Compile Include="BLL\CalculadorDePrecos.cs" />
+    <Compile Include="BLL\Facade.cs" />
     <Compile Include="BLL\GeradorDeDataTM.cs" />
     <Compile Include="BLL\InteracaoEstacionamentoComCFG.cs" />
     <Compile Include="BLL\InteracaoUsuarioEstacionamento.cs" />
+    <Compile Include="BLL\Validador.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
