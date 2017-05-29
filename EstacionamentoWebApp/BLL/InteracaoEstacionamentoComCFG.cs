@@ -19,6 +19,7 @@ namespace EstacionamentoWebApp.BLL
         {
             estDAO = new EstacionamentoDAOImpl();
             cfgDAO = new CfgDAOImpl();
+            geradorCod = new BarCodeGeneratorTM();
         }
 
         public Boolean ocupaVaga(Estacionamento est)
@@ -27,7 +28,7 @@ namespace EstacionamentoWebApp.BLL
             {
                 return false;
             }
-
+            //se for igual gera outro codigo 
                 if(estDAO.Add(est) == false)
             {
                 var novoCod = geradorCod.generateCode();

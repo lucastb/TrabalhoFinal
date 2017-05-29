@@ -37,7 +37,7 @@ namespace EstacionamentoWebApp.BLL
             var dataVaga = estDAO.GetEstacionamentoByID(cod).dt_hr_entrada.Date;
             int ponderacao;
             var resultado = DateTime.Compare(DateTime.Now.Date, dataVaga);
-
+            
             if (resultado < 0)
             {
                 ponderacao = -1;
