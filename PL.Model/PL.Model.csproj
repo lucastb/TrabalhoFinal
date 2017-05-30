@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EstacionamentoContext.cs" />
-    <Compile Include="IEstacionamento.cs" />
     <Compile Include="POCO\CFG_Estacionamento.cs" />
     <Compile Include="POCO\Estacionamento.cs" />
     <Compile Include="POCO\Usuario.cs" />
