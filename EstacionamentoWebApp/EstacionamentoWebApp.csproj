@@ -205,9 +205,24 @@
     <Compile Include="Migrations\201705230640293_BancoFuncionando100PorCento.Designer.cs">
       <DependentUpon>201705230640293_BancoFuncionando100PorCento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705300242043_Modificado.cs" />
+    <Compile Include="Migrations\201705300242043_Modificado.Designer.cs">
+      <DependentUpon>201705300242043_Modificado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705300433570_preco fixo.cs" />
+    <Compile Include="Migrations\201705300433570_preco fixo.Designer.cs">
+      <DependentUpon>201705300433570_preco fixo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705300501143_horasFixasCFG.cs" />
+    <Compile Include="Migrations\201705300501143_horasFixasCFG.Designer.cs">
+      <DependentUpon>201705300501143_horasFixasCFG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705300554357_chegaASerTristeONumeroDeMigrations.cs" />
+    <Compile Include="Migrations\201705300554357_chegaASerTristeONumeroDeMigrations.Designer.cs">
+      <DependentUpon>201705300554357_chegaASerTristeONumeroDeMigrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\FacadeModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -307,6 +322,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705230640293_BancoFuncionando100PorCento.resx">
       <DependentUpon>201705230640293_BancoFuncionando100PorCento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705300242043_Modificado.resx">
+      <DependentUpon>201705300242043_Modificado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705300433570_preco fixo.resx">
+      <DependentUpon>201705300433570_preco fixo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705300501143_horasFixasCFG.resx">
+      <DependentUpon>201705300501143_horasFixasCFG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705300554357_chegaASerTristeONumeroDeMigrations.resx">
+      <DependentUpon>201705300554357_chegaASerTristeONumeroDeMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

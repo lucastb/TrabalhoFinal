@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace EstacionamentoWebApp.Controllers
@@ -15,13 +16,16 @@ namespace EstacionamentoWebApp.Controllers
             string Jikan = time.ToString(format);
             return Jikan;
         }
+       
+       
+
         //não foi testado
-        public string HoraCustom(DateTime zaWarudo)
+        public DateTime HoraCustom(string zaWarudo)
         {
-            string format = "dd-MM-yyyy HH:mm:ss";
-            var lambda = zaWarudo.ToString(format);
+            DateTime lambda = DateTime.ParseExact(zaWarudo, "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US"));
             return lambda;
         }
+
 
         public DateTime data(string date)
         {
@@ -36,7 +40,7 @@ namespace EstacionamentoWebApp.Controllers
             return minutos;
         }
 
-        public int diferencaDias(DateTime diaEntrada, DateTime hoje)
+        public int diferencaDias(DateTime hoje, DateTime diaEntrada)
         {
             var diasDouble = (hoje - diaEntrada).TotalDays;
             int dias = (int)diasDouble;

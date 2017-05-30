@@ -14,5 +14,13 @@ namespace PL.Model.POCO
         
         public string nome { get; set; }
         public int qtd_vagas { get; set; }
+        public DateTime horaAbertura { get; set; }
+        public DateTime horaEncerrameto { get; set; }
+        public double valorFixoPernoite { get; set; }
+        public double valorFixo3Horas { get; set; }
+        public double valorFixoAcima3Horas { get; set; }
+        public double valorFixoExtravio { get; set; }
+
+
     }
 }

@@ -15,6 +15,7 @@ namespace PL.Model.POCO
         
         public string nome { get; set; }
         public string funcao { get; set; }
+        public string email { get; set; }
         public string senha { get; set; }
 
     }
