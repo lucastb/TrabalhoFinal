@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EstacionamentoWebApp.BLL;
+using EstacionamentoWebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,9 +12,15 @@ namespace EstacionamentoWebApp.Controllers
     {
         public ActionResult Index()
         {
+            Facade facade = new Facade();
+            var num = facade.nDeVagasDisponiveis();
+            var valor = num.ToString();
+            ViewBag.qntd = valor;
+            
             return View();
         }
 
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

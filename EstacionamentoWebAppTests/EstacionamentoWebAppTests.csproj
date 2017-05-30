@@ -64,6 +64,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BLL\CalculadorDePrecosTests.cs" />
+    <Compile Include="BLL\GeradorDeDataTMTests.cs" />
     <Compile Include="BLL\InteracaoEstacionamentoComCFGTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

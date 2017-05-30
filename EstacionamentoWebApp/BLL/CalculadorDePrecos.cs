@@ -63,8 +63,19 @@ namespace EstacionamentoWebApp.BLL
         //FAZER
         public double calculaPreco(string cod)
         {
-            // if(checaTempo)
-            return 0;
+            if(checaCortesia(cod) == true)
+            {
+                return 0;
+            }
+
+            var ponderacao = checaTempo(cod);
+            switch (ponderacao)
+            {
+                case 0:
+
+                    return 0;
+            }
+                return 0;
         }
 
 
