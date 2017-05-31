@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace EstacionamentoWebApp.Controllers
+namespace EstacionamentoWebApp.BLL
+
 {
     public class BarCodeGeneratorTM
     {

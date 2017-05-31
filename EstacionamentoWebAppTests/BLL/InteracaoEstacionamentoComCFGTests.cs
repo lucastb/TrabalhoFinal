@@ -31,15 +31,15 @@ namespace EstacionamentoWebApp.BLL.Tests
         //    //Assert.Fail();
         //}
 
-        //[TestMethod()]
-        //public void AddTest()
-        //{
-        //    Estacionamento esTest = new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.Parse(tm.now(), new CultureInfo("en-US")), emitido_por = "teste", valor_pago = 0.0, liberacao_especial = "teste" };
-        //    var logica = estdao.Add(esTest);
-        //    Console.WriteLine(logica);
-        //    Console.WriteLine(intercfg.getVagasDisponiveis());
-        //    //Assert.Fail();
-        //}
+        [TestMethod()]
+        public void AddTest()
+        {
+            Estacionamento esTest = new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.Parse(tm.now(), new CultureInfo("en-US")), emitido_por = "teste", valor_pago = 0.0, liberacao_especial = "teste" };
+            var logica = estdao.Add(esTest);
+            Console.WriteLine(logica);
+            Console.WriteLine(intercfg.getVagasDisponiveis());
+            //Assert.Fail();
+        }
 
 
 
@@ -101,6 +101,6 @@ namespace EstacionamentoWebApp.BLL.Tests
         //    Console.WriteLine(intercfg.getVagasDisponiveis());
         //}
         #endregion
-       
+
     }
 }

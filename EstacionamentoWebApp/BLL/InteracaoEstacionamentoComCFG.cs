@@ -40,7 +40,24 @@ namespace EstacionamentoWebApp.BLL
             return true;
 
         }
+        public void liberaTicket(Estacionamento vaga)
+        {
+            estDAO.liberaTicket(vaga);
+        }
 
+        public void nLiberaTicket(Estacionamento vaga)
+        {
+            estDAO.nLiberaTicket(vaga);
+        }
+
+        public Boolean codRepetido(string cod)
+        {
+            if(estDAO.Repetido(cod) == true)
+            {
+                return true;
+            }
+            return false;
+        }
 
         public int getVagasDisponiveis()
         {
@@ -61,5 +78,26 @@ namespace EstacionamentoWebApp.BLL
             return vagasOcupadas;
         }
         
+        public Boolean codExiste(string cod)
+        {
+           var vagas = estDAO.getEstacionamentos();
+            foreach(Estacionamento est in vagas)
+            {
+                if(est.ticket.Equals(cod) == true)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public Boolean aberto()
+        {
+            if(DateTime.Now.Hour < 2 && DateTime.Now.Hour >= 8)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

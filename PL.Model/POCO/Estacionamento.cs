@@ -23,5 +23,7 @@ namespace PL.Model.POCO
         public string emitido_por { get; set; }
         public double valor_pago { get; set; }
         public string liberacao_especial { get; set; }
+        public Boolean Liberado { get; set; }
+        public string CodEspecial { get; set; }
     }
 }

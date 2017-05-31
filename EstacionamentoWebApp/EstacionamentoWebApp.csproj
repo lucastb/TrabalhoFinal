@@ -190,11 +190,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BLL\BarCodeGeneratorTM.cs" />
     <Compile Include="BLL\CalculadorDePrecos.cs" />
+    <Compile Include="BLL\Cancela.cs" />
+    <Compile Include="BLL\CancelaSaida.cs" />
     <Compile Include="BLL\Facade.cs" />
     <Compile Include="BLL\GeradorDeDataTM.cs" />
+    <Compile Include="BLL\Guiche.cs" />
     <Compile Include="BLL\InteracaoEstacionamentoComCFG.cs" />
     <Compile Include="BLL\InteracaoUsuarioEstacionamento.cs" />
-    <Compile Include="BLL\Validador.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -220,6 +222,14 @@
     <Compile Include="Migrations\201705300554357_chegaASerTristeONumeroDeMigrations.cs" />
     <Compile Include="Migrations\201705300554357_chegaASerTristeONumeroDeMigrations.Designer.cs">
       <DependentUpon>201705300554357_chegaASerTristeONumeroDeMigrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705310104349_liberadoTicket.cs" />
+    <Compile Include="Migrations\201705310104349_liberadoTicket.Designer.cs">
+      <DependentUpon>201705310104349_liberadoTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705310657093_MotivoLiberacao.cs" />
+    <Compile Include="Migrations\201705310657093_MotivoLiberacao.Designer.cs">
+      <DependentUpon>201705310657093_MotivoLiberacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -334,6 +344,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705300554357_chegaASerTristeONumeroDeMigrations.resx">
       <DependentUpon>201705300554357_chegaASerTristeONumeroDeMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705310104349_liberadoTicket.resx">
+      <DependentUpon>201705310104349_liberadoTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705310657093_MotivoLiberacao.resx">
+      <DependentUpon>201705310657093_MotivoLiberacao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

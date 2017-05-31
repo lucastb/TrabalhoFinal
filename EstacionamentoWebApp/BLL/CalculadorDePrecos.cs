@@ -10,7 +10,7 @@ namespace EstacionamentoWebApp.BLL
     public class CalculadorDePrecos
     {
         EstacionamentoDAOImpl estDAO;
-        Controllers.GeradorDeDataTM clock;
+        GeradorDeDataTM clock;
         CfgDAOImpl cfg;
         int horaEncerramento;
         int horaAbertura;
@@ -21,7 +21,7 @@ namespace EstacionamentoWebApp.BLL
         public CalculadorDePrecos()
         {
             estDAO = new EstacionamentoDAOImpl();
-            clock = new Controllers.GeradorDeDataTM();
+            clock = new GeradorDeDataTM();
             cfg = new CfgDAOImpl();
             horaEncerramento = cfg.GetConfiguracao().horaEncerrameto.Hour;
             horaAbertura = cfg.GetConfiguracao().horaAbertura.Hour;

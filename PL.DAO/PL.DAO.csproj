@@ -51,7 +51,9 @@
     <Compile Include="EstacionamentoDAOImpl.cs" />
     <Compile Include="ICfgDAO.cs" />
     <Compile Include="IEstacionamentoDAO.cs" />
+    <Compile Include="IMotivosLiberacaoDAO.cs" />
     <Compile Include="IUsuarioDAO.cs" />
+    <Compile Include="MotivoLiberacaoDAOImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioDAOImpl.cs" />
   </ItemGroup>

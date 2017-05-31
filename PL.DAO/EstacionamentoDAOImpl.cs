@@ -37,6 +37,20 @@ namespace PL.DAO
 
         }
 
+
+        public Boolean Repetido(string cod)
+        {
+            var vagas = getEstacionamentos();
+            foreach (Estacionamento estDaLista in vagas)
+            {
+                if (estDaLista.ticket.Equals(cod))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void Update(Estacionamento est)
         {
            var vagaOriginal = context.Estacionamentos.Find(est.EstacionamentoId);
@@ -84,6 +98,25 @@ namespace PL.DAO
             }
         }
 
+        public void liberaTicket(Estacionamento vaga)
+        {
+            var vagaOriginal = context.Estacionamentos.Find(vaga.EstacionamentoId);
+            if (vagaOriginal != null)
+            {
+                vagaOriginal.Liberado = true;
+                context.SaveChanges();
+            }
+        }
+
+        public void nLiberaTicket(Estacionamento vaga)
+        {
+            var vagaOriginal = context.Estacionamentos.Find(vaga.EstacionamentoId);
+            if (vagaOriginal != null)
+            {
+                vagaOriginal.Liberado = false;
+                context.SaveChanges();
+            }
+        }
 
         public Boolean validaTicket(string cod)
         {

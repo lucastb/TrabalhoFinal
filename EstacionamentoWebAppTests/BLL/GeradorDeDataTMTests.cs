@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using PL.DAO;
 using PL.Model.POCO;
 using System.Globalization;
+using EstacionamentoWebApp.BLL;
 
 namespace EstacionamentoWebApp.Controllers.Tests
 {

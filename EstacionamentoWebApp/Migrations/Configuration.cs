@@ -26,6 +26,15 @@ namespace EstacionamentoWebApp.Migrations
             GeradorDeDataTM gd = new GeradorDeDataTM();
             string format = "MM-dd-yyyy HH:mm:ss";
 
+            var motivosList = new List<MotivosLiberacao>
+            {
+                new MotivosLiberacao {motivo = "Promoção", ativado = false  },
+                new MotivosLiberacao{motivo = "Emergência", ativado = false},
+                
+            };
+            motivosList.ForEach(s => context.motivos.AddOrUpdate(e => e.MotivosLiberacaoId, s));
+            context.SaveChanges();
+
 
             var CFG = new List<CFG_Estacionamento> {
 
@@ -53,17 +62,17 @@ namespace EstacionamentoWebApp.Migrations
             var Ests = new List<Estacionamento> {
                 //new CultureInfo("en-US"))
                
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact(gd.now(), format , new CultureInfo("en-US")),  emitido_por = "Cancela", valor_pago = 0.0, liberacao_especial = "Nenhuma" },
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact("05-29-2017 10:30:00", format, new CultureInfo("en-US")),  dt_hr_saida =  DateTime.ParseExact(gd.now(), format ,new CultureInfo("en-US")) , emitido_por = "Cancela" },
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact(gd.now(),format,new CultureInfo("en-US")),  emitido_por = "Guichê"},
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact(gd.now(),format, new CultureInfo("en-US")), emitido_por = "Guichê"},
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact("05-29-2017 10:30:00", format ,new CultureInfo("en-US")),  dt_hr_saida =  DateTime.ParseExact(gd.now(), format ,new CultureInfo("en-US")) , emitido_por = "Cancela" },
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact(gd.now(),format, new CultureInfo("en-US")), emitido_por = "Guichê" },
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact(gd.now(),format, new CultureInfo("en-US")), emitido_por = "Guichê" },
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact(gd.now(), format , new CultureInfo("en-US")),  emitido_por = "Cancela", valor_pago = 0.0, liberacao_especial = "Nenhuma", Liberado = false },
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact("05-29-2017 10:30:00", format, new CultureInfo("en-US")),  dt_hr_saida =  DateTime.ParseExact(gd.now(), format ,new CultureInfo("en-US")) , emitido_por = "Cancela", Liberado = true },
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact(gd.now(),format,new CultureInfo("en-US")),  emitido_por = "Guichê", Liberado = false},
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact(gd.now(),format, new CultureInfo("en-US")), emitido_por = "Guichê", Liberado = false},
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact("05-29-2017 10:30:00", format ,new CultureInfo("en-US")),  dt_hr_saida =  DateTime.ParseExact(gd.now(), format ,new CultureInfo("en-US")) , emitido_por = "Cancela", Liberado = true },
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact(gd.now(),format, new CultureInfo("en-US")), emitido_por = "Guichê", Liberado = false },
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact(gd.now(),format, new CultureInfo("en-US")), emitido_por = "Guichê", Liberado = false },
 
             };
 
-            Ests.ForEach(s => context.Estacionamentos.AddOrUpdate(f => f.ticket, s));
+            Ests.ForEach(s => context.Estacionamentos.AddOrUpdate(f => f.EstacionamentoId, s));
             context.SaveChanges();
 
         } }

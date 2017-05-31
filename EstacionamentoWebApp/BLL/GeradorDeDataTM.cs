@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace EstacionamentoWebApp.Controllers
+namespace EstacionamentoWebApp.BLL
+
 {
     public class GeradorDeDataTM
     {
