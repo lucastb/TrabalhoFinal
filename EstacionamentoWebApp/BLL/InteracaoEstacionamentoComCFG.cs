@@ -68,8 +68,8 @@ namespace EstacionamentoWebApp.BLL
 
             foreach (Estacionamento vaga in vagas)
             {
-                if(vaga.dt_hr_saida == null)
-                {
+                if(vaga.dt_hr_saida == null ) 
+                {                                                       
                     vagasOcupadas++;
                 }
 

@@ -79,13 +79,17 @@ namespace EstacionamentoWebApp.BLL
         //Liberação de todos os tickets. Em casos determinados pela gerência do estabelecimento (emergências ou
         //eventos especiais, por exemplo), a cancela é liberada de forma independente do status do ticket.Neste
         //caso, o sistema deve armazenar a informação do motivo de liberação do ticket(os possíveis motivos são
-        //pré-definidos).            //FAZER MELHOR KK        public void liberacaoEmergencial(string cod, string motivo)
+        //pré-definidos).
+
+            //FAZER MELHOR KK
+        public void liberacaoEmergencial(string cod, string motivo)
         {
             cancSaida.liberacaoEmergencial(motivo, cod);
         }
         
             
-        
+        
+
 
     }
 }

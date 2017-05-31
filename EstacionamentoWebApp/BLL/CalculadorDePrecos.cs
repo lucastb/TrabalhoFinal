@@ -27,6 +27,11 @@ namespace EstacionamentoWebApp.BLL
             horaAbertura = cfg.GetConfiguracao().horaAbertura.Hour;
         }
 
+        public void alteraPrecoPagar(string cod, double valor)
+        {
+            estDAO.modificarValorAPagar(estDAO.GetEstacionamentoByID(cod), valor);
+        }
+
         public Boolean checaCortesia(string cod)
         {
             var vaga = estDAO.GetEstacionamentoByID(cod);

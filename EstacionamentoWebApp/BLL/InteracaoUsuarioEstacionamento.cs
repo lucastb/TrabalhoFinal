@@ -29,14 +29,13 @@ namespace EstacionamentoWebApp.BLL
             estDAO.liberacaoEspecial(getVagaPeloTicket(Ticket), motivo);
             return true;
         }
-
-        //fazer
-        public Boolean liberarSaida(string cod)  
+       
+        public void alteraPreco(string cod, double valor)
         {
-          var ticketParaValidar = estDAO.GetEstacionamentoByID(cod);
-            
-            return true;
+            var vaga = getVagaPeloTicket(cod);
+            estDAO.modificarValorAPagar(vaga, valor);
         }
+
 
     }
 }
