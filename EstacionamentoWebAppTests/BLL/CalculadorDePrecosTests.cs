@@ -60,31 +60,31 @@ namespace EstacionamentoWebApp.BLL.Tests
         //}
         #endregion
 
-        [TestMethod()]
-        public void checaPernoite()
-        {
-            //string format = "MM-dd-yyyy HH:mm:ss";
+        //[TestMethod()]
+        //public void checaPernoite()
+        //{
+        //    //string format = "MM-dd-yyyy HH:mm:ss";
 
 
-            //var passado = "08-08-2020 01:59:59";
-            // Estacionamento estacionamentoTempoZero = new Estacionamento { ticket = "ATUAL2", dt_hr_entrada = DateTime.ParseExact(tm.now(), format, new CultureInfo("en-US")), emitido_por = "TESTER O TROCO Q CHECA TEMPO", dt_hr_saida = DateTime.ParseExact(tm.now(), format, new CultureInfo("en-US")), valor_pago = 0.0, liberacao_especial = "testecALC" };
-            //Estacionamento viajanteNoTempo = new Estacionamento { ticket = "FUTURO", dt_hr_entrada = DateTime.ParseExact(passado, format, new CultureInfo("en-US")), emitido_por = "passado",  valor_pago = 0.0, liberacao_especial = "testecALC" };
-            //intcfg.ocupaVaga(estacionamentoTempoZero);
-            //intcfg.ocupaVaga(estacionamentoTempoZero);
-            //int tempoIgual = 99;
-            //tempoIgual = calcP.checaTempo("ATUAL");
-            //int tempoFUTURO = calcP.checaTempo("FUTURO");
-            //int tempoNormal = calcP.checaTempo("nYyD3BU0HI8");
-            Boolean var1 = calcP.checaPernoite("2");
-            Boolean var2 = calcP.checaPernoite("3");
-            int hum2 = calcP.checaTempo("2");
-            int hum = calcP.checaTempo("3");
-            // Console.WriteLine(tm.diferencaHoras(DateTime.Now, estdao.GetEstacionamentoByID("4").dt_hr_entrada));
-            Console.WriteLine(hum2);
-            Console.WriteLine(var1);
-            Console.WriteLine(hum);
-            Console.WriteLine(var2);
-        }
+        //    //var passado = "08-08-2020 01:59:59";
+        //    // Estacionamento estacionamentoTempoZero = new Estacionamento { ticket = "ATUAL2", dt_hr_entrada = DateTime.ParseExact(tm.now(), format, new CultureInfo("en-US")), emitido_por = "TESTER O TROCO Q CHECA TEMPO", dt_hr_saida = DateTime.ParseExact(tm.now(), format, new CultureInfo("en-US")), valor_pago = 0.0, liberacao_especial = "testecALC" };
+        //    //Estacionamento viajanteNoTempo = new Estacionamento { ticket = "FUTURO", dt_hr_entrada = DateTime.ParseExact(passado, format, new CultureInfo("en-US")), emitido_por = "passado",  valor_pago = 0.0, liberacao_especial = "testecALC" };
+        //    //intcfg.ocupaVaga(estacionamentoTempoZero);
+        //    //intcfg.ocupaVaga(estacionamentoTempoZero);
+        //    //int tempoIgual = 99;
+        //    //tempoIgual = calcP.checaTempo("ATUAL");
+        //    //int tempoFUTURO = calcP.checaTempo("FUTURO");
+        //    //int tempoNormal = calcP.checaTempo("nYyD3BU0HI8");
+        //    Boolean var1 = calcP.checaPernoite("2");
+        //    Boolean var2 = calcP.checaPernoite("3");
+        //    int hum2 = calcP.checaTempo("2");
+        //    int hum = calcP.checaTempo("3");
+        //    // Console.WriteLine(tm.diferencaHoras(DateTime.Now, estdao.GetEstacionamentoByID("4").dt_hr_entrada));
+        //    Console.WriteLine(hum2);
+        //    Console.WriteLine(var1);
+        //    Console.WriteLine(hum);
+        //    Console.WriteLine(var2);
+        //}
 
     }
 }
