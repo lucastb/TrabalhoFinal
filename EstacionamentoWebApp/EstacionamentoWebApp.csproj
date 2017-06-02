@@ -263,10 +263,23 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cancelaAbertaTipo1_NOPROCERINO.jpg" />
+    <Content Include="Content\cancelaAbertaTipo2_NOPROCERINO.jpg" />
+    <Content Include="Content\cancelaAbertaTipo3_NOPROCERINO.jpg" />
+    <Content Include="Content\cancelaFechadaTipo2_NOPROCERINO.jpg" />
+    <Content Include="Content\cancelaFechadaTipo3_NOPROCERINO.jpg" />
+    <Content Include="Content\processinho.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\BarcodeRender.exe" />
+    <Content Include="Models\Zen.Barcode.Core.dll" />
+    <Content Include="Models\Zen.Barcode.Design.dll" />
+    <Content Include="Models\Zen.Barcode.SSRS.Design.dll" />
+    <Content Include="Models\Zen.Barcode.SSRS.dll" />
+    <Content Include="Models\Zen.Barcode.Web.dll" />
+    <Content Include="Models\Zen.Barcode.Web.Mvc.dll" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
