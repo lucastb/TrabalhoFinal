@@ -69,6 +69,7 @@ namespace PL.DAO
             return motivo;
         }
 
+
         public IEnumerable<MotivosLiberacao> getMotivos()
         {
             var motivos = context.motivos.ToList();

@@ -22,6 +22,8 @@ namespace EstacionamentoWebApp.BLL
             geradorCod = new BarCodeGeneratorTM();
         }
 
+       
+
         public Boolean ocupaVaga(Estacionamento est)
         {
             if (getVagasDisponiveis() <= 0)

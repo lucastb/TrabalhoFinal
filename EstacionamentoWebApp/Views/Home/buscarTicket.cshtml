@@ -1,0 +1,13 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+<header><h1><b>CÓDIGO: @ViewBag.code</b></h1></></header>
+<br />
+  
+<center><h2>Hora da entrada: @ViewBag.date</h2></center>
+<center><h2>Valor a pagar: R$@ViewBag.preco</h2></center>
+<br />
+<center><h1><img src="@String.Format("data:image/png;base64,{0}", @ViewBag.codigoDeBarras)" /></h1></center>
+        
+</body>
+</html>

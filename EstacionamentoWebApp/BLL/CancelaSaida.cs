@@ -13,14 +13,18 @@ namespace EstacionamentoWebApp.BLL
         EstacionamentoDAOImpl est;
         GeradorDeDataTM datador;
         InteracaoEstacionamentoComCFG estcfg;
+        MotivoLiberacaoDAOImpl moti;
 
 
-            public CancelaSaida()
+
+        public CancelaSaida()
             {
                 calc = new CalculadorDePrecos();
                 est = new EstacionamentoDAOImpl();
                 datador = new GeradorDeDataTM();
                 estcfg = new InteracaoEstacionamentoComCFG();
+                moti = new MotivoLiberacaoDAOImpl();
+            
             }
 
             public int liberaSaida(string cod)

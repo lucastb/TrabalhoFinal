@@ -1,6 +1,7 @@
 ﻿using PL.Model.POCO;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -13,6 +14,7 @@ namespace EstacionamentoWebApp.BLL
         CalculadorDePrecos calcP;
         Cancela cancela;
         CancelaSaida cancSaida;
+        BarCodeGeneratorTM bcg;
 
         public Facade()
         {
@@ -21,6 +23,7 @@ namespace EstacionamentoWebApp.BLL
             calcP = new CalculadorDePrecos();
             cancela = new Cancela();
             cancSaida = new CancelaSaida();
+            bcg = new BarCodeGeneratorTM();
         }
 
         //1 - Número de vagas disponíveis. Como o estacionamento possui um número máximo de vagas, o sistema
@@ -87,9 +90,24 @@ namespace EstacionamentoWebApp.BLL
             cancSaida.liberacaoEmergencial(motivo, cod);
         }
         
-            
-        
+            public Boolean codExiste(string cod)
+        {
+            return intCfg.codExiste(cod);
+        }
 
+        
+        public string geraCodigoDeBarrasTM(System.Drawing.Image img)
+        {
+            var byteImagem = bcg.turnImageToByteArray(img);
+            var imagemString = bcg.turByteEmString64TM(byteImagem);
+            return imagemString;
+        }
+
+        public Estacionamento geTicket(string cod)
+        {
+            var ticket = intUser.getVagaPeloTicket(cod);
+            return ticket;
+        }
 
     }
 }

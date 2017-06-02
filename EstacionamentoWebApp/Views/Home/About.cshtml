@@ -1,7 +1,16 @@
-﻿@{
-    ViewBag.Title = "CHEQUE STATUS DO SEU TICKET DE ESTACIONAMENTO";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@*<body style="background-color:lightgray;">*@
+    <div class="jumbotron">
+        <center><h1>CHEQUE O STATUS </h1></center>
+        <center><h1>DO SEU TICKET</h1></center>
+    </div>
+    <body>
+        <center><h3><b>INSIRA O CÓDIGO DO TICKET</b> </h3></center>
+        <br />
+        <br />
+        <form action="buscarTicket">
 
-<p>WHEN THE THOT IS GONE JUST RIGHT.</p>
+            <center><input type="text" name="codigo"></center><br>
+            <center>  <input type="submit" value="Procurar!"></center>
+        </form>
+
+    </body>

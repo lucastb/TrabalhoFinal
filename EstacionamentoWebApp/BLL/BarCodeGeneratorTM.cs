@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -23,5 +24,17 @@ namespace EstacionamentoWebApp.BLL
             return finalString;
         }
 
+        public byte[] turnImageToByteArray(System.Drawing.Image img)
+        {
+            MemoryStream ms = new MemoryStream();
+            img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            return ms.ToArray();
+        }
+
+        public string turByteEmString64TM(byte[] aux)
+        {
+            string susanoo = Convert.ToBase64String(aux);
+            return susanoo;
+        }
     }
 }

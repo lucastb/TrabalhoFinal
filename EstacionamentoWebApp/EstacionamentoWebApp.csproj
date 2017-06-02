@@ -45,11 +45,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BarcodeRender">
+      <HintPath>..\..\..\..\..\..\Downloads\Barcode.Render.Release.3.1.10729\BarcodeRender.exe</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
@@ -109,6 +113,24 @@
     <Reference Include="Antlr3.Runtime">
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Zen.Barcode.Core">
+      <HintPath>..\..\..\..\..\..\Downloads\Barcode.Render.Release.3.1.10729\Zen.Barcode.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Zen.Barcode.Design">
+      <HintPath>..\..\..\..\..\..\Downloads\Barcode.Render.Release.3.1.10729\Zen.Barcode.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Zen.Barcode.SSRS">
+      <HintPath>..\..\..\..\..\..\Downloads\Barcode.Render.Release.3.1.10729\Zen.Barcode.SSRS.dll</HintPath>
+    </Reference>
+    <Reference Include="Zen.Barcode.SSRS.Design">
+      <HintPath>..\..\..\..\..\..\Downloads\Barcode.Render.Release.3.1.10729\Zen.Barcode.SSRS.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Zen.Barcode.Web">
+      <HintPath>..\..\..\..\..\..\Downloads\Barcode.Render.Release.3.1.10729\Zen.Barcode.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Zen.Barcode.Web.Mvc">
+      <HintPath>..\..\..\..\..\..\Downloads\Barcode.Render.Release.3.1.10729\Zen.Barcode.Web.Mvc.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +322,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\buscarTicket.cshtml" />
+    <Content Include="Views\Home\CodInvalido.cshtml" />
+    <Content Include="Views\Home\CancelaDeEntrada.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
