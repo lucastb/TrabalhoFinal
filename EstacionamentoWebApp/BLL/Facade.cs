@@ -46,7 +46,7 @@ namespace EstacionamentoWebApp.BLL
         //barras ou qr-code), data e horário de entrada do automóvel.
         public string cancelaEmiteTicket()
         {
-            return cancela.emiteTicket();
+          return cancela.emiteTicket();
         }
 
         //4 - cancela de saida

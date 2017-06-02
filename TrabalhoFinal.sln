@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL.Model", "PL.Model\PL.Model.csproj", "{A255B532-8ED3-4B01-85E5-F5AFFFECD37E}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL.DAO", "PL.DAO\PL.DAO.csproj", "{906A7AA0-AC5F-49F8-8654-108DA1F6F8C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstacionamentoWebAppTests", "EstacionamentoWebAppTests\EstacionamentoWebAppTests.csproj", "{82B3BC53-A837-420C-95A1-0128E1D13C9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstacionamentoWebAppTests1", "EstacionamentoWebAppTests1\EstacionamentoWebAppTests1.csproj", "{59E11E0C-F283-427C-9131-A43AA0099760}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{82B3BC53-A837-420C-95A1-0128E1D13C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82B3BC53-A837-420C-95A1-0128E1D13C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82B3BC53-A837-420C-95A1-0128E1D13C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59E11E0C-F283-427C-9131-A43AA0099760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59E11E0C-F283-427C-9131-A43AA0099760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59E11E0C-F283-427C-9131-A43AA0099760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59E11E0C-F283-427C-9131-A43AA0099760}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

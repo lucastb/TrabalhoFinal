@@ -1,17 +1,43 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #000000;
+            background-color: #FF0000;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+            .button:hover {
+                background-color: #FF0000;
+            }
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+            .button:active {
+                background-color: #8B0000;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+                color: #808080;
+            }
+    </style>
+</head>
+<body>
+
+    <center> <img HEIGHT="350" WIDTH="500" src="~/Content/cancelaFechadaTipo2_NOPROCERINO.jpg" alt="Cancela Fechada"> </center>
+    <br><br><br><br>
+    <center><h4><i>Pressione o botão para emitir um ticket</i></h4></center>
+    <br>
+    <form action="btnEmitirTicketEntrada">
+        <center><button class="button">PRESSIONE!</button></center>
+        </form>
+
+</body>
+</html>
