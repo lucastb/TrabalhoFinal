@@ -13,7 +13,10 @@ namespace EstacionamentoWebApp.BLL
         BarCodeGeneratorTM bcg;
         GeradorDeDataTM clock;
         InteracaoUsuarioEstacionamento yareYare;
-        
+        Estacionamento ticketEmitir;
+
+
+
 
         public Guiche()
         {
@@ -22,6 +25,7 @@ namespace EstacionamentoWebApp.BLL
             bcg = new BarCodeGeneratorTM();
             clock = new GeradorDeDataTM();
             yareYare = new InteracaoUsuarioEstacionamento();
+            ticketEmitir = new Estacionamento();
         }
 
         public string geraCodespecial()
@@ -41,24 +45,23 @@ namespace EstacionamentoWebApp.BLL
         public string emiteTicketCasoExtravio(Boolean extravio)
         {
             string dataEmissao = clock.now();
-            Estacionamento vaga = new Estacionamento();
-            vaga.ticket = bcg.generateCode();
-            vaga.dt_hr_entrada = clock.HoraCustom(dataEmissao);
-            vaga.emitido_por = "Guichê";
-            vaga.valor_pago = 0.0;
-            vaga.Liberado = false;
+            ticketEmitir.ticket = bcg.generateCode();
+            ticketEmitir.dt_hr_entrada = clock.HoraCustom(dataEmissao);
+            ticketEmitir.emitido_por = "Guichê";
+            ticketEmitir.valor_pago = 0.0;
+            ticketEmitir.Liberado = false;
             if(extravio == true)
             {
-                vaga.CodEspecial = "TKEXT";
+                ticketEmitir.CodEspecial = "TKEXT";
             }
-            else { vaga.CodEspecial = geraCodespecial(); }
+            else { ticketEmitir.CodEspecial = geraCodespecial(); }
 
-            while(cfg.codExiste(vaga.ticket) == true)
+            while(cfg.codExiste(ticketEmitir.ticket) == true)
             {
-                vaga.ticket = bcg.generateCode();
+                ticketEmitir.ticket = bcg.generateCode();
             }
-            cfg.ocupaVaga(vaga);
-            return vaga.ticket;
+            cfg.ocupaVaga(ticketEmitir);
+            return ticketEmitir.ticket;
             
         }
 
@@ -86,7 +89,27 @@ namespace EstacionamentoWebApp.BLL
             return false;
         }
 
-        
+        public string emitirTicket()
+        {
+            if (cfg.getVagasDisponiveis() > 0)
+            {
+                ticketEmitir.ticket = bcg.generateCode();
+
+                while (cfg.codRepetido(ticketEmitir.ticket) == true)
+                {
+                    ticketEmitir.ticket = bcg.generateCode();
+                }
+
+                ticketEmitir.dt_hr_entrada = clock.HoraCustom(clock.now());
+                ticketEmitir.emitido_por = "Guichê";
+                ticketEmitir.Liberado = false;
+                ticketEmitir.valor_pago = 0.0;
+                cfg.ocupaVaga(ticketEmitir);
+                return ticketEmitir.ticket;
+
+            }else { return "lotado"; }
+        }
+
 
     }
 }

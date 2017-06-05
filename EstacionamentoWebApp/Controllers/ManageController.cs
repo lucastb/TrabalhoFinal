@@ -50,6 +50,13 @@ namespace EstacionamentoWebApp.Controllers
             }
         }
 
+        [Authorize]
+        public ActionResult gemtt()
+        {
+            return View("~/Views/Home/EmitirTicket.cshtml"); 
+
+        }
+
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)

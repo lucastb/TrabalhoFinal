@@ -15,6 +15,7 @@ namespace EstacionamentoWebApp.BLL
         Cancela cancela;
         CancelaSaida cancSaida;
         BarCodeGeneratorTM bcg;
+        Guiche guiche;
 
         public Facade()
         {
@@ -24,6 +25,7 @@ namespace EstacionamentoWebApp.BLL
             cancela = new Cancela();
             cancSaida = new CancelaSaida();
             bcg = new BarCodeGeneratorTM();
+            guiche = new Guiche();
         }
 
         //1 - Número de vagas disponíveis. Como o estacionamento possui um número máximo de vagas, o sistema
@@ -95,7 +97,24 @@ namespace EstacionamentoWebApp.BLL
             return intCfg.codExiste(cod);
         }
 
-        
+        //5- O sistema deve permitir os seguintes casos de uso por parte do operador do caixa de cobrança:
+    //// Emissão de ticket de estacionamento, contendo um código(passível de transformação para código de
+    ////barras ou qr-code), data e horário de emissão.A emissão de ticket diretamente no guichê de pagamento
+    ////(caso em que o ticket original foi extraviado, ou outro motivo qualquer considerado relevante pela gerência
+    ////do centro comercial) utiliza sempre um código especial como identificador(o valor real do código é pré-
+    ////definido no sistema).
+
+        //    public string guicheEmiteTicket()
+        //{
+        //   var res =  guiche.emitirTicket();
+
+        //    if (res.Equals("lotado"))
+        //    {
+
+        //    }
+        //}
+
+
         public string geraCodigoDeBarrasTM(System.Drawing.Image img)
         {
             var byteImagem = bcg.turnImageToByteArray(img);
