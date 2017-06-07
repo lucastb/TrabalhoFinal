@@ -61,6 +61,20 @@ namespace EstacionamentoWebApp.BLL
             return false;
         }
 
+        public int getExtraviadosQueSairam()
+        {
+            var vagas = estDAO.getEstacionamentos();
+            int nVagas = 0;
+            foreach (Estacionamento vaga in vagas)
+            {
+                if(vaga.CodEspecial != null && vaga.dt_hr_saida != null)
+                {
+                    nVagas++;
+                }
+            }
+            return nVagas;
+        }
+
         public int getVagasDisponiveis()
         {
             int nVagasLimite = cfgDAO.GetConfiguracao().qtd_vagas;
@@ -70,16 +84,16 @@ namespace EstacionamentoWebApp.BLL
 
             foreach (Estacionamento vaga in vagas)
             {
-                if(vaga.dt_hr_saida == null ) 
-                {                                                       
+                if (vaga.dt_hr_saida == null & vaga.CodEspecial == null)
+                {
                     vagasOcupadas++;
                 }
 
             }
-            vagasOcupadas = nVagasLimite - vagasOcupadas;
-            return vagasOcupadas;
+            var vagasDisponiveis =  nVagasLimite - vagasOcupadas + getExtraviadosQueSairam();
+            return vagasDisponiveis;
         }
-        
+
         public Boolean codExiste(string cod)
         {
            var vagas = estDAO.getEstacionamentos();
