@@ -30,7 +30,9 @@ namespace EstacionamentoWebApp.Migrations
             {
                 new MotivosLiberacao {motivo = "Promoção", ativado = false  },
                 new MotivosLiberacao{motivo = "Emergência", ativado = false},
-                
+                new MotivosLiberacao{motivo = "outros", ativado = false},
+
+
             };
             motivosList.ForEach(s => context.motivos.AddOrUpdate(e => e.MotivosLiberacaoId, s));
             context.SaveChanges();

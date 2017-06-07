@@ -61,6 +61,8 @@ namespace EstacionamentoWebApp.BLL
             return false;
         }
 
+
+        //Contar o número de carros que sairam, pelo numero de tickets extraviados q sairam
         public int getExtraviadosQueSairam()
         {
             var vagas = estDAO.getEstacionamentos();
@@ -90,6 +92,9 @@ namespace EstacionamentoWebApp.BLL
                 }
 
             }
+            //pega o numero de tickets extraviados q sairam e adiciona no valor total de vagas, pois 
+            //existem tickets "fantasmas", que ficaram para tras e nunca vão sair, pois o "dono"
+            //pegou um extraviado e saiu com ele.
             var vagasDisponiveis =  nVagasLimite - vagasOcupadas + getExtraviadosQueSairam();
             return vagasDisponiveis;
         }

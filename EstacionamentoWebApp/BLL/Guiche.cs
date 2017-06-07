@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PL.DAO;
 
 namespace EstacionamentoWebApp.BLL
 {
@@ -14,18 +15,23 @@ namespace EstacionamentoWebApp.BLL
         GeradorDeDataTM clock;
         InteracaoUsuarioEstacionamento yareYare;
         Estacionamento ticketEmitir;
+        IntercaoMotivos im;
+        EstacionamentoDAOImpl estDAO;
+        
 
 
 
 
         public Guiche()
         {
+            im = new IntercaoMotivos();
             cfg = new InteracaoEstacionamentoComCFG();
             cp = new CalculadorDePrecos();
             bcg = new BarCodeGeneratorTM();
             clock = new GeradorDeDataTM();
             yareYare = new InteracaoUsuarioEstacionamento();
             ticketEmitir = new Estacionamento();
+            estDAO = new EstacionamentoDAOImpl();
         }
 
         public string geraCodespecial()
@@ -61,8 +67,7 @@ namespace EstacionamentoWebApp.BLL
                 ticketEmitir.ticket = bcg.generateCode();
             }
             cfg.ocupaVaga(ticketEmitir);
-            return ticketEmitir.ticket;
-            
+            return ticketEmitir.ticket;            
         }
 
         public double valorPagar(string cod)
@@ -77,16 +82,12 @@ namespace EstacionamentoWebApp.BLL
 
         }
         
-        public Boolean liberaTicketPorPagamento(string cod)
+        public void liberaTicketPorPagamento(string cod)
         {
-          if(cfg.codExiste(cod) == true){
                 var ticket = yareYare.getVagaPeloTicket(cod);
                 var divida = valorPagar(cod);
                 cfg.liberaTicket(ticket);
                 cp.alteraPrecoPagar(cod, divida);
-                return true;
-            }
-            return false;
         }
         
 
@@ -109,6 +110,16 @@ namespace EstacionamentoWebApp.BLL
                 return ticketEmitir.ticket;
 
             }else { return "lotado"; }
+        }
+
+        public void liberaSPagamento(string cod, int id)
+        {
+            var vaga = yareYare.getVagaPeloTicket(cod);
+            estDAO.modificarValorAPagar(vaga, 0.0);
+            estDAO.liberacaoEspecial(vaga, im.getMotById(id).motivo);
+            estDAO.liberaTicket(vaga);
+ 
+
         }
 
 
