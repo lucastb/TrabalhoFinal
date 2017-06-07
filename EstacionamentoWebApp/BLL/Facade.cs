@@ -56,46 +56,50 @@ namespace EstacionamentoWebApp.BLL
         //funcionamento):
         // Validação de ticket para liberação da cancela.O sistema deve receber o número do ticket e verificar se o
         //mesmo está liberado a fim da cancela ser aberta.
-        public string validarTicketParaSaida(string cod)
+        public int validarTicketParaSaida(string cod)
         {
             var resultadoValidacao = cancSaida.liberaSaida(cod);
 
-            switch (resultadoValidacao)
-            {
-                case 0:
-                    return "Código inexistente";
-                    
-                case 1:
-                    return "Cancela Aberta";
+            //switch (resultadoValidacao)
+            //{
+            //    case -1:
+            //        return "Liberação especial" + "\nCancela Aberta";
 
-                case 2:
-                    return "Cortesia!" + "\nCancela Aberta";
+            //    case 0:
+            //        return "Código inexistente";
 
-                case 3:
-                    return "Ticket não pago... valor a pagar: " + calcP.calculaPreco(cod);
+            //    case 1:
+            //        return "Cancela Aberta";
 
-                case 4:
-                    return "Erro!";
-                    
-            }
-            return "Erro!";
+            //    case 2:
+            //        return "Cortesia!" + "\nCancela Aberta";
+
+            //    case 3:
+            //        return "Ticket não pago... valor a pagar: " + calcP.calculaPreco(cod);
+
+            //    case 4:
+            //        return "Erro!";
+
+            //}
+            //return "Erro!";
+
+            return resultadoValidacao;
         }
 
         //Liberação de todos os tickets. Em casos determinados pela gerência do estabelecimento (emergências ou
         //eventos especiais, por exemplo), a cancela é liberada de forma independente do status do ticket.Neste
         //caso, o sistema deve armazenar a informação do motivo de liberação do ticket(os possíveis motivos são
         //pré-definidos).
+        public Boolean liberacaoEmergencialFacade(string cod)
+        {
+            if(cancSaida.liberacaoEmergencial(cod) == true)
+            {
+                return true;
+            }
+            else { return false; }
+        }       
 
-            //FAZER MELHOR KK
-        public void liberacaoEmergencial(string cod, string motivo)
-        {
-            cancSaida.liberacaoEmergencial(motivo, cod);
-        }
-        
-            public Boolean codExiste(string cod)
-        {
-            return intCfg.codExiste(cod);
-        }
+
 
         //5- O sistema deve permitir os seguintes casos de uso por parte do operador do caixa de cobrança:
     //// Emissão de ticket de estacionamento, contendo um código(passível de transformação para código de
@@ -127,6 +131,12 @@ namespace EstacionamentoWebApp.BLL
             var ticket = intUser.getVagaPeloTicket(cod);
             return ticket;
         }
+
+        public Boolean codExiste(string cod)
+        {
+            return intCfg.codExiste(cod);
+        }
+
 
     }
 }

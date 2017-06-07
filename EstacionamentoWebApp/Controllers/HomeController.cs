@@ -82,7 +82,10 @@ namespace EstacionamentoWebApp.Controllers
             }
 
         
-
+        public ActionResult CancelaSaida()
+        {
+            return View();
+        }
 
 
         public ActionResult Contact()
@@ -98,5 +101,70 @@ namespace EstacionamentoWebApp.Controllers
 
             return View();
         }
+
+
+        //4 - cancela de saida
+        //        O sistema deve permitir os seguintes casos de uso por parte da cancela de saída(o sistema permite dois modos de
+        //funcionamento):
+        // Validação de ticket para liberação da cancela.O sistema deve receber o número do ticket e verificar se o
+        //mesmo está liberado a fim da cancela ser aberta.
+
+        public ActionResult validarSaida(String codigo)
+        {
+            var res = facade.validarTicketParaSaida(codigo);
+            switch (res)
+            {
+                case -1:
+                    ViewBag.especial = "Saída Liberada! \nLiberação especial";
+                    return View("~/Views/CancelaSaida/SaidaLiberada.cshtml");
+
+                case 0:
+                    return PartialView("~/Views/Home/CodInvalido.cshtml");
+                    
+                case 1:
+                    ViewBag.saida = "Saída Liberada! \nObrigado!";
+                    return View("~/Views/CancelaSaida/SaidaLiberada.cshtml");
+
+                case 2:
+                    ViewBag.cortesia = "Cortesia! \nSaída Liberada!";
+                    return View("~/Views/CancelaSaida/SaidaLiberada.cshtml");
+
+                case 3:
+                    ViewBag.nPago = "Ticket não pago!";
+                    ViewBag.valor = facade.precoPagar(codigo);
+                    return View("~/Views/CancelaSaida/NPago.cshtml");
+
+
+                case 4:
+                    return View("~/Views/CancelaSaida/Erro.cshtml");
+
+            }
+            return View("~/Views/CancelaSaida/Erro.cshtml");
+        }
+
+        //Liberação de todos os tickets. Em casos determinados pela gerência do estabelecimento (emergências ou
+        //eventos especiais, por exemplo), a cancela é liberada de forma independente do status do ticket.Neste
+        //caso, o sistema deve armazenar a informação do motivo de liberação do ticket(os possíveis motivos são
+        //pré-definidos).
+        public ActionResult LibEmergencial(string cod)
+        {
+            if(facade.codExiste(cod) == false)
+            {
+                return PartialView("~/Views/Home/CodInvalido.cshtml");
+            }
+
+            if (facade.liberacaoEmergencialFacade(cod) == true)
+            {
+                ViewBag.lEspecial = facade.geTicket(cod).liberacao_especial;
+                return View("~/Views/CancelaSaida/SaidaLiberada.cshtml");
+            }
+            else
+            {
+                return View("~/Views/CancelaSaida/LiberacaoEspFalse.cshtml");
+                
+            }
+        }
+
+
     }
 }

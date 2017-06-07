@@ -22,11 +22,33 @@ namespace PL.DAO
             context.SaveChanges();
         }
 
+        public string motivo()
+        {
+            var motivos = getMotivos();
+            foreach(MotivosLiberacao mot in motivos)
+            {
+                if(mot.ativado == true)
+                {
+                    return mot.motivo;
+                }
+            }
+
+            return "erro";
+        }
+
         public void alteraStatusAtivado(MotivosLiberacao mot)
         {
+            var motivos = getMotivos();
             var motivoOriginal = context.motivos.Find(mot.MotivosLiberacaoId);
             if (motivoOriginal != null)
             {
+                foreach(MotivosLiberacao motiv in motivos)
+                {
+                    var motivoFalse = context.motivos.Find(motiv.MotivosLiberacaoId);
+                    motivoFalse.ativado = false;
+                    context.SaveChanges();
+
+                }
                 motivoOriginal.ativado = true;
                 context.SaveChanges();
             }
@@ -74,6 +96,19 @@ namespace PL.DAO
         {
             var motivos = context.motivos.ToList();
             return motivos;
+        }
+
+        public Boolean temAtivado()
+        {
+            var motivos = getMotivos();
+            foreach(MotivosLiberacao mot in motivos)
+            {
+                if(mot.ativado == true)
+                {
+                    return true;
+                }                
+            }
+            return false;
         }
 
         public void Update(MotivosLiberacao mot)

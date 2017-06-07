@@ -54,11 +54,15 @@ namespace EstacionamentoWebApp.BLL
             int minutoEntrada = vaga.dt_hr_entrada.Minute;
             int agora = DateTime.Now.Hour;
 
+
             ////para testar no lugar do 'agora'
             //string format = "MM-dd-yyyy HH:mm:ss"; //para teste
             //DateTime dummie = DateTime.ParseExact("05-30-2017 10:30:00", format, new CultureInfo("en-US")); //para teste
             //int dummieHora = dummie.Hour; //para teste
-
+            if(clock.diferencaDias(DateTime.Now, vaga.dt_hr_entrada) > 1)
+            {
+                return true;
+            }
 
             switch (amaterasu)
             {

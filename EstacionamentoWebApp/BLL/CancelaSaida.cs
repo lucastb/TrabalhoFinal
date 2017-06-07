@@ -13,8 +13,7 @@ namespace EstacionamentoWebApp.BLL
         EstacionamentoDAOImpl est;
         GeradorDeDataTM datador;
         InteracaoEstacionamentoComCFG estcfg;
-        MotivoLiberacaoDAOImpl moti;
-
+        IntercaoMotivos im;
 
 
         public CancelaSaida()
@@ -23,8 +22,7 @@ namespace EstacionamentoWebApp.BLL
                 est = new EstacionamentoDAOImpl();
                 datador = new GeradorDeDataTM();
                 estcfg = new InteracaoEstacionamentoComCFG();
-                moti = new MotivoLiberacaoDAOImpl();
-            
+            im = new IntercaoMotivos();
             }
 
             public int liberaSaida(string cod)
@@ -36,11 +34,18 @@ namespace EstacionamentoWebApp.BLL
 
             var ticket = est.GetEstacionamentoByID(cod);
 
+
+            //if (est.GetEstacionamentoByID(cod).liberacao_especial != null)
+            //{
+            //    est.mudarHoraDeSaida(ticket, DateTime.ParseExact(datador.now(), "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US")));
+            //    return -1;
+            //}
+            
                 if (calc.checaCortesia(cod) == false)
                 {
                 if(ticket.Liberado == true)
                 {
-                    est.mudarHoraDeSaida(ticket, DateTime.Parse(datador.now(), new CultureInfo("en-US")));
+                    est.mudarHoraDeSaida(ticket, DateTime.ParseExact(datador.now(), "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US")));
                     return 1;
 
                 }else if(ticket.Liberado == false) {return 3;}
@@ -56,22 +61,23 @@ namespace EstacionamentoWebApp.BLL
             return 4;
             }
 
-        public Boolean liberacaoEmergencial(string motivo, string cod)
+        public Boolean liberacaoEmergencial(string cod)
         {
-            if(estcfg.codExiste(cod) == false)
+            if(im.temAtivado() == true)
             {
-                return false;
+                var motivo = im.motivo();
+                var ticket = est.GetEstacionamentoByID(cod);
+                est.liberacaoEspecial(ticket, motivo);
+                est.liberaTicket(ticket);
+                est.modificarValorAPagar(ticket, 0.0);
+                est.mudarHoraDeSaida(ticket, DateTime.Now);
+                return true;
+
             }else
             {
-                var ticket = est.GetEstacionamentoByID(cod);
-                var valor = 0.0;
-                est.modificarValorAPagar(ticket, valor);
-                est.liberacaoEspecial(ticket, motivo);
-                est.mudarHoraDeSaida(ticket, DateTime.Parse(datador.now(), new CultureInfo("en-US")));
-                est.liberaTicket(ticket);
-                return true;
+                return false;
             }
         }
-        }
+      }
     }
 

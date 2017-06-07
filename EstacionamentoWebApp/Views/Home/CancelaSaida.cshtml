@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "CancelaSaida";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #000000;
+            background-color: #FF0000;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+            .button:hover {
+                background-color: #FF0000;
+            }
+
+            .button:active {
+                background-color: #8B0000;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+                color: #808080;
+            }
+    </style>
+</head>
+<body>
+
+    <center> <img HEIGHT="350" WIDTH="500" src="~/Content/CancelaVermelha.jpg" alt="Cancela Fechada"> </center> 
+
+    
+    <center><h3><b>Insira o ticket</b> </h3></center>
+    <br />
+    <br />
+    <form action="validarSaida">
+
+        <center><input type="text" name="codigo"></center><br>
+            <center><button class="button">VALIDAR SAÍDA</button></center>
+
+        </form>
+    <br />
+    <br />
+        <form action="LibEmergencial">
+            <center><input type="text" name="cod"></center><br>
+        <center>  <input type="submit" value="Liberar Especial"></center>
+    </form>
+
+</body>
+</html>
