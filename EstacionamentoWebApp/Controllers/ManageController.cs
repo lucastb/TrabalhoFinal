@@ -57,7 +57,62 @@ namespace EstacionamentoWebApp.Controllers
             }
         }
 
+        public ActionResult getPreco(string codigo)
+        {
+            Facade f = new Facade();
+            if(f.codExiste(codigo) == false)
+            {
+                return View("CodInvalidoM");
+            }
+            ViewBag.preco = "Valor: R$"+f.precoPagar(codigo);
+            return View("~/Views/Manage/TicketPagoNoGuiche.cshtml");
 
+        }
+
+        public ActionResult pagar (string codigo)
+        {
+            Facade f = new Facade();
+            if(f.codExiste(codigo) == false)
+            {
+                return View("CodInvalidoM");
+            }
+            f.pagaTicket(codigo);
+            ViewBag.pago = "Ticket pago!";
+            return View("~/Views/Manage/TicketPagoNoGuiche.cshtml");
+        }
+
+        public ActionResult liberaSPagar(string codigo, string motivo)
+        {
+            Facade f = new Facade();
+            if (f.codExiste(codigo) == false)
+            {
+                return View("CodInvalidoM");
+            }
+            f.liberaSemPagar(codigo, motivo);
+            ViewBag.liberado = "Ticket liberado para saída";
+            return View("~/Views/Manage/TicketPagoNoGuiche.cshtml");
+        }
+
+        public ActionResult retorna()
+        {
+            return View("TicketPagoNoGuiche");
+        }
+
+        public ActionResult ligaMotivo(string motivo)
+        {
+            Facade f = new Facade();
+            f.ativaMotivoFacade(motivo);
+            ViewBag.ativado = "Ativado motivo: " + motivo;
+            return View("~/Views/Guiche/ligaMotivo.cshtml");
+        }
+
+        public ActionResult desabilitaTodos()
+        {
+            Facade f = new Facade();
+            f.desativaTodos();
+            ViewBag.desabilitado = "Todos modos desligados";
+            return View("~/Views/Guiche/ligaMotivo.cshtml");
+        }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {

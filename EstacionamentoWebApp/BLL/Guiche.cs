@@ -91,13 +91,14 @@ namespace EstacionamentoWebApp.BLL
                 var divida = valorPagar(cod);
                 cfg.liberaTicket(ticket);
                 cp.alteraPrecoPagar(cod, divida);
+                
         }
         
-        public void liberaSPagamento(string cod, int id)
+        public void liberaSPagamento(string cod, string nomeMotivo)
         {
             var vaga = yareYare.getVagaPeloTicket(cod);
             estDAO.modificarValorAPagar(vaga, 0.0);
-            estDAO.liberacaoEspecial(vaga, im.getMotById(id).motivo);
+            estDAO.liberacaoEspecial(vaga, nomeMotivo);
             estDAO.liberaTicket(vaga);
         }
 

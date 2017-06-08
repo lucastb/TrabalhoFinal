@@ -3,5 +3,51 @@
     ViewBag.Title = "TicketPagoNoGuiche";
 }
 
-<h2>TicketPagoNoGuiche</h2>
+<center><h1>CALCULAR VALOR PAGAMENTO</h1></center>
+
+<center><h4><b>INSIRA O CÓDIGO DO TICKET</b> </h4></center>
+
+<form action="getPreco">
+
+    <center><input type="text" name="codigo"></center><br>
+    <center>  <input type="submit" value="Calcular"></center>
+    </form>
+<center>@ViewBag.preco</center>
+
+
+<br /><br /><br />
+<center><h1>PAGAR TICKET E LIBERAR SAÍDA</h1></center>
+<center>
+
+    <center><h4><b>INSIRA O CÓDIGO DO TICKET</b> </h4></center>
+
+    <form action="pagar">
+
+        <center><input type="text" name="codigo"></center><br>
+        <center>  <input type="submit" value="Pagar"></center>
+    </form>
+    <center>@ViewBag.pago</center>
+
+
+
+    <br />
+
+
+    <center><h1>Libera ticket sem pagar</h1></center>
+    <form action="liberaSPagar">
+        <center><h4><b>INSIRA O CÓDIGO DO TICKET</b> </h4></center>
+        <center><input type="text" name="codigo"></center><br>
+        <center><h3><b>Motivo</b></h3></center>
+        <select name="motivo" required>
+            <option value="Promoção">Promoção</option>
+            <option value="Emergência">Emergência</option>
+            <option value="outros">outros</option>
+        </select>
+        <br />
+        <center>  <input type="submit" value="Liberar"></center>
+    </form>
+</center>
+<center>@ViewBag.liberado</center>
+
+
 

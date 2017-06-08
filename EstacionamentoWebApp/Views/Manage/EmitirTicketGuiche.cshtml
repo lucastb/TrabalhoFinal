@@ -6,22 +6,30 @@
 <center><h1>EMITIR TICKET</h1></center>
 
 <form action="EmitirTktGuiche">
-    <center>@Html.CheckBox("checkResp") Extravio?</center>     
+    <center>@Html.CheckBox("checkResp") Extravio?</center>
     <center>  <input type="submit" value="Emitir"></center>
 </form>
 
 <br /><br /><br />
 <center><h1>LIBERAR SAÍDA DE TODOS TICKETS</h1></center>
 <center>
-    <form action="EmitirTktGuiche">
-        <select>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
-        </select>
-        <center>  <input type="submit" value="Emitir"></center>
-    </form>
 
+    <center><h3>Desativa motivos de liberação especial</h3></center>
+    <form action="desabilitaTodos">
+        <center>  <input type="submit" value="Desativar"></center>
+    </form>
+    <br /> <br />
+
+
+    <center><h3>Ativa motivo de liberação especial</h3></center>
+    <form action="ligaMotivo">
+        <select name="motivo" required>
+            <option value="Promoção">Promoção</option>
+            <option value="Emergência">Emergência</option>
+            <option value="outros">outros</option>
+        </select>
+        <center>  <input type="submit" value="Ativar"></center>
+    </form>
 </center>
+
 

@@ -80,17 +80,31 @@ namespace EstacionamentoWebApp.BLL
             return res;
         }
        
-        public void ativaMotivoFacade(string nome)
+        public void ativaMotivoFacade(string motivo)
         {
-            guiche.ativaMotivo(nome);   
+            guiche.ativaMotivo(motivo);   
         }
 
         public void desativaTodos()
         {
             guiche.desativaMotivos();
         }
-        
 
+//      6 -  Liberação de ticket com pagamento.Após o recebimento do valor devido, o funcionário do guichê solicita ao
+//        sistema a liberação do ticket.
+        public void pagaTicket(string cod)
+        {
+            guiche.liberaTicketPorPagamento(cod);
+
+        }
+
+        //7 - Liberação de ticket sem pagamento.Em alguns casos especiais, o funcionário do guichê pode liberar
+        //diretamente o ticket, sem o pagamento ter sido efetuado.Neste caso, o sistema deve armazenar a
+        //informação do motivo de liberação do ticket.Os possíveis motivos são pré-definidos e contêm pelos menos
+        //a opção “outros” para indicar casos não previstos.        public void liberaSemPagar(string codigo, string motivo)
+        {
+            guiche.liberaSPagamento(codigo, motivo);
+        }
 
         public string geraCodigoDeBarrasTM(System.Drawing.Image img)
         {
