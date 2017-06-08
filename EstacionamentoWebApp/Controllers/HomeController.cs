@@ -17,20 +17,19 @@ namespace EstacionamentoWebApp.Controllers
         Facade facade = new Facade();
 
 
-
+        //OK
         //1 - Número de vagas disponíveis. Como o estacionamento possui um número máximo de vagas, o sistema
         //deve ser capaz de informar o número atual de vagas livres
         public ActionResult Index()
         {
             Facade facade = new Facade();
             var num = facade.nDeVagasDisponiveis();
-            var valor = num.ToString();
-            ViewBag.qntd = valor;
+            ViewBag.qntd = num;
             
             return View();
         }
 
-
+        //OK
         //2 - Consulta do valor a ser pago pelo ticket do estacionamento. Com base no número de identificação, o
         //sistema deve fornecer o valor atual a ser pago para a liberação do ticket de estacionamento.
         public ActionResult buscarTicket(String codigo)
@@ -38,6 +37,17 @@ namespace EstacionamentoWebApp.Controllers
             if (facade.codExiste(codigo) == true)
             {
                 var v = facade.geTicket(codigo);
+                if (v.dt_hr_saida != null)
+                {
+                    ViewBag.jaSaiu = "Ticket já deixou o estacionamento";
+                    return View("JaValidado");
+                }
+                if (v.valor_pago > 0)
+                {
+                    ViewBag.pago = "Ticket Pago";
+                    return View("JaValidado");                 
+                }
+
                 var horaEntrada = v.dt_hr_entrada;
                 var valor = facade.precoPagar(v.ticket);
                 ViewBag.preco = valor;
@@ -62,6 +72,7 @@ namespace EstacionamentoWebApp.Controllers
         }
 
 
+        //OK
         //3 - Cancela
         //Emissão de ticket de estacionamento, contendo um código (passível de transformação para código de
         //barras ou qr-code), data e horário de entrada do automóvel.
@@ -103,11 +114,16 @@ namespace EstacionamentoWebApp.Controllers
         }
 
 
+        //OK
         //4 - cancela de saida
         //        O sistema deve permitir os seguintes casos de uso por parte da cancela de saída(o sistema permite dois modos de
         //funcionamento):
         // Validação de ticket para liberação da cancela.O sistema deve receber o número do ticket e verificar se o
         //mesmo está liberado a fim da cancela ser aberta.
+        //Liberação de todos os tickets. Em casos determinados pela gerência do estabelecimento (emergências ou
+        //eventos especiais, por exemplo), a cancela é liberada de forma independente do status do ticket.Neste
+        //caso, o sistema deve armazenar a informação do motivo de liberação do ticket(os possíveis motivos são
+        //pré-definidos).
 
         public ActionResult validarSaida(String codigo)
         {
@@ -134,36 +150,34 @@ namespace EstacionamentoWebApp.Controllers
                     ViewBag.valor = facade.precoPagar(codigo);
                     return View("~/Views/CancelaSaida/NPago.cshtml");
 
-
                 case 4:
                     return View("~/Views/CancelaSaida/Erro.cshtml");
+
+                case 5:
+                    return View("~/Views/CancelaEntrada/Fechado.cshtml");
 
             }
             return View("~/Views/CancelaSaida/Erro.cshtml");
         }
 
-        //Liberação de todos os tickets. Em casos determinados pela gerência do estabelecimento (emergências ou
-        //eventos especiais, por exemplo), a cancela é liberada de forma independente do status do ticket.Neste
-        //caso, o sistema deve armazenar a informação do motivo de liberação do ticket(os possíveis motivos são
-        //pré-definidos).
-        public ActionResult LibEmergencial(string cod)
-        {
-            if(facade.codExiste(cod) == false)
-            {
-                return PartialView("~/Views/Home/CodInvalido.cshtml");
-            }
+        //public ActionResult LibEmergencial(string cod)
+        //{
+        //    if(facade.codExiste(cod) == false)
+        //    {
+        //        return PartialView("~/Views/Home/CodInvalido.cshtml");
+        //    }
 
-            if (facade.liberacaoEmergencialFacade(cod) == true)
-            {
-                ViewBag.lEspecial = facade.geTicket(cod).liberacao_especial;
-                return View("~/Views/CancelaSaida/SaidaLiberada.cshtml");
-            }
-            else
-            {
-                return View("~/Views/CancelaSaida/LiberacaoEspFalse.cshtml");
+        //    if (facade.liberacaoEmergencialFacade(cod) == true)
+        //    {
+        //        ViewBag.lEspecial = facade.geTicket(cod).liberacao_especial;
+        //        return View("~/Views/CancelaSaida/SaidaLiberada.cshtml");
+        //    }
+        //    else
+        //    {
+        //        return View("~/Views/CancelaSaida/LiberacaoEspFalse.cshtml");
                 
-            }
-        }
+        //    }
+        //}
 
 
     }

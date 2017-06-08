@@ -345,6 +345,10 @@
     <Content Include="Views\CancelaSaida\NPago.cshtml" />
     <Content Include="Views\CancelaSaida\Erro.cshtml" />
     <Content Include="Views\CancelaSaida\LiberacaoEspFalse.cshtml" />
+    <Content Include="Views\Home\JaValidado.cshtml" />
+    <Content Include="Views\Manage\EmitirTicketGuiche.cshtml" />
+    <Content Include="Views\Manage\TicketPagoNoGuiche.cshtml" />
+    <Content Include="Views\Guiche\TicketEmitidoGuiche.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

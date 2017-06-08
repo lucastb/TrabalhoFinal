@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EstacionamentoWebApp.Models;
+using EstacionamentoWebApp.BLL;
+using Zen.Barcode;
 
 namespace EstacionamentoWebApp.Controllers
 {
@@ -18,7 +20,44 @@ namespace EstacionamentoWebApp.Controllers
 
         public ManageController()
         {
+            
         }
+
+        [Authorize]
+        public ActionResult EmitirTicketGuiche()
+        {
+            return View("EmitirTicketGuiche");
+
+        }
+
+        [Authorize]
+        public ActionResult TicketPagoNoGuiche()
+        {
+            return View("TicketPagoNoGuiche");
+        }
+
+        [Authorize]
+        public ActionResult EmitirTktGuiche(bool checkResp)
+        {
+            Facade f = new Facade();            
+            var ticketOuLotado = f.guicheEmiteTicket(checkResp);
+            if (ticketOuLotado.Equals("cheio"))
+            {
+                return View("~/Views/CancelaEntrada/Lotado.cshtml");
+            }
+            else
+            {
+                var tkt = f.geTicket(ticketOuLotado);
+                ViewBag.date = tkt.dt_hr_entrada;
+                ViewBag.code = tkt.ticket;
+                Code128BarcodeDraw bdf = BarcodeDrawFactory.Code128WithChecksum;
+                ViewBag.codigoDeBarras = f.geraCodigoDeBarrasTM(bdf.Draw(tkt.ticket, 50));
+                return View("~/Views/Guiche/TicketEmitidoGuiche.cshtml");
+
+            }
+        }
+
+
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
@@ -50,12 +89,7 @@ namespace EstacionamentoWebApp.Controllers
             }
         }
 
-        [Authorize]
-        public ActionResult gemtt()
-        {
-            return View("~/Views/Home/EmitirTicket.cshtml"); 
-
-        }
+       
 
         //
         // GET: /Manage/Index

@@ -22,11 +22,17 @@ namespace EstacionamentoWebApp.BLL
                 est = new EstacionamentoDAOImpl();
                 datador = new GeradorDeDataTM();
                 estcfg = new InteracaoEstacionamentoComCFG();
-            im = new IntercaoMotivos();
+                im = new IntercaoMotivos();
             }
 
             public int liberaSaida(string cod)
             {
+
+            if(estcfg.aberto() == false)
+            {
+                return 5;
+            }
+
               if(estcfg.codExiste(cod) == false)
             {
                 return 0;
@@ -34,13 +40,15 @@ namespace EstacionamentoWebApp.BLL
 
             var ticket = est.GetEstacionamentoByID(cod);
 
-
-            //if (est.GetEstacionamentoByID(cod).liberacao_especial != null)
-            //{
-            //    est.mudarHoraDeSaida(ticket, DateTime.ParseExact(datador.now(), "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US")));
-            //    return -1;
-            //}
-            
+            if(im.temAtivado() == true)
+            {
+                var motivo = im.motivo();
+                est.liberacaoEspecial(ticket, motivo);
+                est.liberaTicket(ticket);
+                est.modificarValorAPagar(ticket, 0.0);
+                est.mudarHoraDeSaida(ticket, DateTime.Now);
+                return -1;
+            }
                 if (calc.checaCortesia(cod) == false)
                 {
                 if(ticket.Liberado == true)
@@ -65,12 +73,7 @@ namespace EstacionamentoWebApp.BLL
         {
             if(im.temAtivado() == true)
             {
-                var motivo = im.motivo();
-                var ticket = est.GetEstacionamentoByID(cod);
-                est.liberacaoEspecial(ticket, motivo);
-                est.liberaTicket(ticket);
-                est.modificarValorAPagar(ticket, 0.0);
-                est.mudarHoraDeSaida(ticket, DateTime.Now);
+               
                 return true;
 
             }else

@@ -12,15 +12,21 @@ namespace EstacionamentoWebApp.BLL.Tests
     public class IntercaoMotivosTests
     {
         IntercaoMotivos m = new IntercaoMotivos();
-        [TestMethod()]
+        //[TestMethod()]
         //public void IntercaoMotivosTest()
         //{
         //    m.ativa(m.getMotById(2));
         //}
 
-        public void desativa()
+        //public void desativa()
+        //{
+        //    //m.desativa(m.getMotById(2));
+        //}
+
+        [TestMethod()]
+        public void desativaTodos()
         {
-            m.desativa(m.getMotById(2));
+            m.desativaTodos();
         }
     }
 }

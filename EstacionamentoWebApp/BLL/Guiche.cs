@@ -66,8 +66,11 @@ namespace EstacionamentoWebApp.BLL
             {
                 ticketEmitir.ticket = bcg.generateCode();
             }
-            cfg.ocupaVaga(ticketEmitir);
-            return ticketEmitir.ticket;            
+            if (cfg.ocupaVaga(ticketEmitir) == true)
+            {
+                return ticketEmitir.ticket;
+            }
+            else{ return "cheio"; }            
         }
 
         public double valorPagar(string cod)
@@ -90,36 +93,30 @@ namespace EstacionamentoWebApp.BLL
                 cp.alteraPrecoPagar(cod, divida);
         }
         
-
-        public string emitirTicket()
-        {
-            if (cfg.getVagasDisponiveis() > 0)
-            {
-                ticketEmitir.ticket = bcg.generateCode();
-
-                while (cfg.codRepetido(ticketEmitir.ticket) == true)
-                {
-                    ticketEmitir.ticket = bcg.generateCode();
-                }
-
-                ticketEmitir.dt_hr_entrada = clock.HoraCustom(clock.now());
-                ticketEmitir.emitido_por = "Guichê";
-                ticketEmitir.Liberado = false;
-                ticketEmitir.valor_pago = 0.0;
-                cfg.ocupaVaga(ticketEmitir);
-                return ticketEmitir.ticket;
-
-            }else { return "lotado"; }
-        }
-
         public void liberaSPagamento(string cod, int id)
         {
             var vaga = yareYare.getVagaPeloTicket(cod);
             estDAO.modificarValorAPagar(vaga, 0.0);
             estDAO.liberacaoEspecial(vaga, im.getMotById(id).motivo);
             estDAO.liberaTicket(vaga);
- 
+        }
 
+        public void ativaMotivo(string nome)
+        {
+            var motivos = im.getMotivos();
+            MotivosLiberacao aux = new MotivosLiberacao();
+            foreach(MotivosLiberacao reasons in motivos)
+            {
+                if (reasons.motivo.Equals(nome)){
+                    aux = reasons;
+                }
+            }
+            im.ativa(aux);
+        }
+
+        public void desativaMotivos()
+        {
+            im.desativaTodos();
         }
 
 

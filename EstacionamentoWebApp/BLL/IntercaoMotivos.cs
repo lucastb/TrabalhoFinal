@@ -45,5 +45,14 @@ namespace EstacionamentoWebApp.BLL
         {
             ml.alteraStatusDesativo(mot);
         }
+
+        public void desativaTodos()
+        {
+            var motivos = getMotivos();
+            foreach(MotivosLiberacao mot in motivos)
+            {
+                ml.alteraStatusDesativo(mot);
+            }
+        }
     }
 }

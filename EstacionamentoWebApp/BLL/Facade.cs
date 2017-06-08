@@ -56,67 +56,40 @@ namespace EstacionamentoWebApp.BLL
         //funcionamento):
         // Validação de ticket para liberação da cancela.O sistema deve receber o número do ticket e verificar se o
         //mesmo está liberado a fim da cancela ser aberta.
-        public int validarTicketParaSaida(string cod)
-        {
-            var resultadoValidacao = cancSaida.liberaSaida(cod);
-
-            //switch (resultadoValidacao)
-            //{
-            //    case -1:
-            //        return "Liberação especial" + "\nCancela Aberta";
-
-            //    case 0:
-            //        return "Código inexistente";
-
-            //    case 1:
-            //        return "Cancela Aberta";
-
-            //    case 2:
-            //        return "Cortesia!" + "\nCancela Aberta";
-
-            //    case 3:
-            //        return "Ticket não pago... valor a pagar: " + calcP.calculaPreco(cod);
-
-            //    case 4:
-            //        return "Erro!";
-
-            //}
-            //return "Erro!";
-
-            return resultadoValidacao;
-        }
-
         //Liberação de todos os tickets. Em casos determinados pela gerência do estabelecimento (emergências ou
         //eventos especiais, por exemplo), a cancela é liberada de forma independente do status do ticket.Neste
         //caso, o sistema deve armazenar a informação do motivo de liberação do ticket(os possíveis motivos são
         //pré-definidos).
-        public Boolean liberacaoEmergencialFacade(string cod)
+
+        public int validarTicketParaSaida(string cod)
         {
-            if(cancSaida.liberacaoEmergencial(cod) == true)
-            {
-                return true;
-            }
-            else { return false; }
-        }       
-
-
+            var resultadoValidacao = cancSaida.liberaSaida(cod);
+            return resultadoValidacao;
+        }
 
         //5- O sistema deve permitir os seguintes casos de uso por parte do operador do caixa de cobrança:
-    //// Emissão de ticket de estacionamento, contendo um código(passível de transformação para código de
-    ////barras ou qr-code), data e horário de emissão.A emissão de ticket diretamente no guichê de pagamento
-    ////(caso em que o ticket original foi extraviado, ou outro motivo qualquer considerado relevante pela gerência
-    ////do centro comercial) utiliza sempre um código especial como identificador(o valor real do código é pré-
-    ////definido no sistema).
+        //// Emissão de ticket de estacionamento, contendo um código(passível de transformação para código de
+        ////barras ou qr-code), data e horário de emissão.A emissão de ticket diretamente no guichê de pagamento
+        ////(caso em que o ticket original foi extraviado, ou outro motivo qualquer considerado relevante pela gerência
+        ////do centro comercial) utiliza sempre um código especial como identificador(o valor real do código é pré-
+        ////definido no sistema).
+        public string guicheEmiteTicket(Boolean extravio)
+        {
+            //se for extraviado recebe codigo de extravio, se n recebe cod especial por outro motivo relevante ao funcionario
+            var res = guiche.emiteTicketCasoExtravio(extravio);
+            return res;
+        }
+       
+        public void ativaMotivoFacade(string nome)
+        {
+            guiche.ativaMotivo(nome);   
+        }
 
-        //    public string guicheEmiteTicket()
-        //{
-        //   var res =  guiche.emitirTicket();
-
-        //    if (res.Equals("lotado"))
-        //    {
-
-        //    }
-        //}
+        public void desativaTodos()
+        {
+            guiche.desativaMotivos();
+        }
+        
 
 
         public string geraCodigoDeBarrasTM(System.Drawing.Image img)
