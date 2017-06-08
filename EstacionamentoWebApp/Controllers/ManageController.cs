@@ -114,6 +114,13 @@ namespace EstacionamentoWebApp.Controllers
             return View("~/Views/Guiche/ligaMotivo.cshtml");
         }
 
+
+        public ActionResult adm()
+        {
+            return View("~/Views/Guiche/Administrativo.cshtml");
+        }
+
+
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;

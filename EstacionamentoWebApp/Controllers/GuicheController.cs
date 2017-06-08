@@ -14,5 +14,10 @@ namespace EstacionamentoWebApp.Controllers
             return View();
         }
 
+        public ActionResult Administrativo()
+        {
+            return View();
+        }
+
     }
 }
