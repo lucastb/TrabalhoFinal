@@ -41,7 +41,11 @@ namespace EstacionamentoWebApp.Controllers
         {
             Facade f = new Facade();            
             var ticketOuLotado = f.guicheEmiteTicket(checkResp);
-            if (ticketOuLotado.Equals("cheio"))
+            if (ticketOuLotado.Equals("impossivel"))
+            {
+                return View("~/Views/Guiche/Vazio.cshtml");
+            }
+            else if (ticketOuLotado.Equals("cheio"))
             {
                 return View("~/Views/CancelaEntrada/Lotado.cshtml");
             }

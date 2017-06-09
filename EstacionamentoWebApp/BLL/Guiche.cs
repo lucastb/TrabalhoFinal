@@ -50,6 +50,11 @@ namespace EstacionamentoWebApp.BLL
 
         public string emiteTicketCasoExtravio(Boolean extravio)
         {
+            if(cfg.getVagasDisponiveis() >= 40)
+            {
+                return "impossivel";
+            }
+
             string dataEmissao = clock.now();
             ticketEmitir.ticket = bcg.generateCode();
             ticketEmitir.dt_hr_entrada = clock.HoraCustom(dataEmissao);

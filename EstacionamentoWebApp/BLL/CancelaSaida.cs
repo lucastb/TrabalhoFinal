@@ -49,8 +49,16 @@ namespace EstacionamentoWebApp.BLL
                 est.mudarHoraDeSaida(ticket, DateTime.Now);
                 return -1;
             }
-                if (calc.checaCortesia(cod) == false)
+
+            if(est.GetEstacionamentoByID(cod).CodEspecial != null)
+            {
+                if (ticket.Liberado == true)
                 {
+                    est.mudarHoraDeSaida(ticket, DateTime.ParseExact(datador.now(), "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US")));
+                    return 1;
+                }else { return 3; }
+            }else if (calc.checaCortesia(cod) == false){
+
                 if(ticket.Liberado == true)
                 {
                     est.mudarHoraDeSaida(ticket, DateTime.ParseExact(datador.now(), "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US")));
@@ -69,18 +77,8 @@ namespace EstacionamentoWebApp.BLL
             return 4;
             }
 
-        public Boolean liberacaoEmergencial(string cod)
-        {
-            if(im.temAtivado() == true)
-            {
-               
-                return true;
-
-            }else
-            {
-                return false;
-            }
+       
         }
       }
-    }
+    
 

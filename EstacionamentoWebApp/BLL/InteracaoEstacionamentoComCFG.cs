@@ -114,7 +114,7 @@ namespace EstacionamentoWebApp.BLL
 
         public Boolean aberto()
         {
-            if (DateTime.Now.Hour != 2 && DateTime.Now.Hour != 3 && DateTime.Now.Hour != 4 && DateTime.Now.Hour != 5 && DateTime.Now.Hour != 6 && DateTime.Now.Hour != 7 && DateTime.Now.Hour != 8)
+            if (DateTime.Now.Hour != 2 && DateTime.Now.Hour != 3 && DateTime.Now.Hour != 4 && DateTime.Now.Hour != 5 && DateTime.Now.Hour != 6 && DateTime.Now.Hour != 7)
             {
                 return true;
                

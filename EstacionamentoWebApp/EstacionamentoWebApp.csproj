@@ -353,6 +353,7 @@
     <Content Include="Views\Guiche\ligaMotivo.cshtml" />
     <Content Include="Views\Manage\CodInvalidoM.cshtml" />
     <Content Include="Views\Guiche\Administrativo.cshtml" />
+    <Content Include="Views\Guiche\Vazio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

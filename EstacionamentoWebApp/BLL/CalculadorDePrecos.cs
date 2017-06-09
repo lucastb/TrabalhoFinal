@@ -127,6 +127,12 @@ namespace EstacionamentoWebApp.BLL
         
         public double calculaPreco(string cod)
         {
+            var ticketObj = estDAO.GetEstacionamentoByID(cod);
+            if (ticketObj.CodEspecial != null)
+            {
+                return cfg.GetConfiguracao().valorFixoExtravio; 
+            }
+
             if (checaCortesia(cod) == true)
             {
                 return 0;
@@ -137,6 +143,7 @@ namespace EstacionamentoWebApp.BLL
             var preco3Horas = cfg.GetConfiguracao().valorFixo3Horas;
             var precoPernoite = cfg.GetConfiguracao().valorFixoPernoite;
             var precoFixoAcima3Horas = cfg.GetConfiguracao().valorFixoAcima3Horas;
+           
 
             if (checaPernoite(cod) == false)
             {

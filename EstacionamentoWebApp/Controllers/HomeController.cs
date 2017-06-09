@@ -41,11 +41,17 @@ namespace EstacionamentoWebApp.Controllers
                 {
                     ViewBag.jaSaiu = "Ticket já deixou o estacionamento";
                     return View("JaValidado");
-                }
+                }                
                 if (v.valor_pago > 0)
                 {
                     ViewBag.pago = "Ticket Pago";
                     return View("JaValidado");                 
+                }
+                if (v.Liberado == true)
+                {
+                    ViewBag.lin = "Ticket já liberado para saída!";
+                    return View("JaValidado");
+
                 }
 
                 var horaEntrada = v.dt_hr_entrada;
