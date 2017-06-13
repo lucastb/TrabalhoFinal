@@ -61,6 +61,7 @@ namespace EstacionamentoWebApp.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult getPreco(string codigo)
         {
             if(f.codExiste(codigo) == false)
@@ -72,6 +73,7 @@ namespace EstacionamentoWebApp.Controllers
 
         }
 
+        [Authorize]
         public ActionResult pagar (string codigo)
         {
             if(f.codExiste(codigo) == false)
@@ -83,6 +85,7 @@ namespace EstacionamentoWebApp.Controllers
             return View("~/Views/Manage/TicketPagoNoGuiche.cshtml");
         }
 
+        [Authorize]
         public ActionResult liberaSPagar(string codigo, string motivo)
         {
             if (f.codExiste(codigo) == false)
@@ -94,11 +97,13 @@ namespace EstacionamentoWebApp.Controllers
             return View("~/Views/Manage/TicketPagoNoGuiche.cshtml");
         }
 
+        [Authorize]
         public ActionResult retorna()
         {
             return View("TicketPagoNoGuiche");
         }
 
+        [Authorize]
         public ActionResult ligaMotivo(string motivo)
         {
             Facade f = new Facade();
@@ -107,6 +112,7 @@ namespace EstacionamentoWebApp.Controllers
             return View("~/Views/Guiche/ligaMotivo.cshtml");
         }
 
+        [Authorize]
         public ActionResult desabilitaTodos()
         {
             f.desativaTodos();
@@ -114,7 +120,7 @@ namespace EstacionamentoWebApp.Controllers
             return View("~/Views/Guiche/ligaMotivo.cshtml");
         }
 
-
+        [Authorize(Users ="admin@psa.br")]
         public ActionResult adm()
         {
             return View("~/Views/Guiche/Administrativo.cshtml");

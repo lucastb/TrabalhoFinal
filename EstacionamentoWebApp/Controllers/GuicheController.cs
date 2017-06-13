@@ -35,7 +35,7 @@ namespace EstacionamentoWebApp.Controllers
             {
                 vagas = vagas.Where(v => f.mes(v.dt_hr_saida) == f.NumeroMesPeloNome(searchString));
             }
-
+            return View();
             //ViewBag.preco == sortOrder == "Valor" ? "valor_asc" : "valor_desc";
         }
 
