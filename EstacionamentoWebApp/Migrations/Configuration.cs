@@ -61,7 +61,7 @@ namespace EstacionamentoWebApp.Migrations
             new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact("05-29-2017 10:30:00", format, new CultureInfo("en-US")),  dt_hr_saida =  DateTime.ParseExact("05-29-2017 12:30:00", format, new CultureInfo("en-US")), valor_pago = 5.00, emitido_por = "Cancela", Liberado = true },
             new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact(gd.now(),format,new CultureInfo("en-US")),  emitido_por = "Cancela", Liberado = false},
             new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact(gd.now(),format, new CultureInfo("en-US")), emitido_por = "Cancela", Liberado = false},
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact("05-29-2017 10:30:00", format ,new CultureInfo("en-US")),  dt_hr_saida =  DateTime.ParseExact(gd.now(), format ,new CultureInfo("en-US")) , emitido_por = "Cancela", Liberado = true },
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact("05-29-2017 10:30:00", format ,new CultureInfo("en-US")),  dt_hr_saida =  DateTime.ParseExact(gd.now(), format ,new CultureInfo("en-US")) , valor_pago = 700, emitido_por = "Cancela", Liberado = true },
             new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact("06-11-2017 10:30:00", format ,new CultureInfo("en-US")), emitido_por = "Guichê", Liberado = false, CodEspecial = "TKTEXT" },
             new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact("06-12-2017 10:30:00", format ,new CultureInfo("en-US")), emitido_por = "Guichê", Liberado = false, CodEspecial = "TKTEXT" },
 

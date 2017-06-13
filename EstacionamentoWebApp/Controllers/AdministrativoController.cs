@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EstacionamentoWebApp.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace EstacionamentoWebApp.Controllers
 {
     public class AdministrativoController : Controller
     {
+        private Facade f = new Facade();
         // GET: Administrativo
         public ActionResult Index()
         {

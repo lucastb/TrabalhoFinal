@@ -128,6 +128,8 @@ namespace EstacionamentoWebApp.BLL
             return intCfg.codExiste(cod);
         }
 
+        #region Informações administrativas
+
         public IEnumerable<Estacionamento> getListaDeTickets()
         {
             return intCfg.getListaDeEstacionamentos();
@@ -137,6 +139,12 @@ namespace EstacionamentoWebApp.BLL
         {
             return intCfg.getEstacionamentosQueTemSaida();
         }
+
+        public double getValorTotalPago()
+        {
+            return calcP.valorTotalPago();
+        }
+            
 
         public IEnumerable<Mes> getMeses()
         {
@@ -158,6 +166,6 @@ namespace EstacionamentoWebApp.BLL
         //    return clock.getDia(dt);
         //}
 
-
+        #endregion
     }
 }

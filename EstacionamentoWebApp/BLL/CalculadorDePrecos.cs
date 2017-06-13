@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using PL.Model.POCO;
 
 namespace EstacionamentoWebApp.BLL
 {
@@ -12,6 +13,7 @@ namespace EstacionamentoWebApp.BLL
         EstacionamentoDAOImpl estDAO;
         GeradorDeDataTM clock;
         CfgDAOImpl cfg;
+        InteracaoEstacionamentoComCFG intcfg;
         int horaEncerramento;
         int horaAbertura;
         
@@ -23,6 +25,7 @@ namespace EstacionamentoWebApp.BLL
             estDAO = new EstacionamentoDAOImpl();
             clock = new GeradorDeDataTM();
             cfg = new CfgDAOImpl();
+            intcfg = new InteracaoEstacionamentoComCFG();
             horaEncerramento = cfg.GetConfiguracao().horaEncerrameto.Hour;
             horaAbertura = cfg.GetConfiguracao().horaAbertura.Hour;
         }
@@ -130,6 +133,7 @@ namespace EstacionamentoWebApp.BLL
             var ticketObj = estDAO.GetEstacionamentoByID(cod);
             if (ticketObj.CodEspecial != null)
             {
+
                 return cfg.GetConfiguracao().valorFixoExtravio; 
             }
 
@@ -171,6 +175,17 @@ namespace EstacionamentoWebApp.BLL
 
             }
                 return -1;
+        }
+
+        public double valorTotalPago()
+        {
+            double valor = 0;
+            var list = intcfg.getEstacionamentosQueTemSaida();
+            foreach(Estacionamento est in list)
+            {
+                valor = valor + est.valor_pago;
+            }
+            return valor;
         }
     }
 }

@@ -130,6 +130,7 @@ namespace EstacionamentoWebApp.Controllers
         public ActionResult Admin()
         {
             var ticket = f.getEstatacionamentosCSaida();
+            ViewBag.valorT = f.getValorTotalPago();
             return View("~/Views/Administrativo/Index.cshtml", ticket);
         }
 
