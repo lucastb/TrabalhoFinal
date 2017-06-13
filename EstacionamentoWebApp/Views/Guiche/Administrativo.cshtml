@@ -5,3 +5,12 @@
 
 <h2>Administrativo</h2>
 
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name or director: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+        Select Genre: @Html.DropDownList("SelectedGenre", "All")
+        <input type="submit" value="Filter" />
+    </p>
+}

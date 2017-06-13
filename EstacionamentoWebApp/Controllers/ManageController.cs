@@ -17,6 +17,7 @@ namespace EstacionamentoWebApp.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private Facade f = new Facade();
 
         public ManageController()
         {
@@ -39,7 +40,6 @@ namespace EstacionamentoWebApp.Controllers
         [Authorize]
         public ActionResult EmitirTktGuiche(bool checkResp)
         {
-            Facade f = new Facade();            
             var ticketOuLotado = f.guicheEmiteTicket(checkResp);
             if (ticketOuLotado.Equals("impossivel"))
             {
@@ -63,7 +63,6 @@ namespace EstacionamentoWebApp.Controllers
 
         public ActionResult getPreco(string codigo)
         {
-            Facade f = new Facade();
             if(f.codExiste(codigo) == false)
             {
                 return View("CodInvalidoM");
@@ -75,7 +74,6 @@ namespace EstacionamentoWebApp.Controllers
 
         public ActionResult pagar (string codigo)
         {
-            Facade f = new Facade();
             if(f.codExiste(codigo) == false)
             {
                 return View("CodInvalidoM");
@@ -87,7 +85,6 @@ namespace EstacionamentoWebApp.Controllers
 
         public ActionResult liberaSPagar(string codigo, string motivo)
         {
-            Facade f = new Facade();
             if (f.codExiste(codigo) == false)
             {
                 return View("CodInvalidoM");
@@ -112,7 +109,6 @@ namespace EstacionamentoWebApp.Controllers
 
         public ActionResult desabilitaTodos()
         {
-            Facade f = new Facade();
             f.desativaTodos();
             ViewBag.desabilitado = "Todos modos desligados";
             return View("~/Views/Guiche/ligaMotivo.cshtml");

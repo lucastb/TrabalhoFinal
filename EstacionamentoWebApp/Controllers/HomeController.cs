@@ -13,8 +13,8 @@ namespace EstacionamentoWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        Code128BarcodeDraw bdf = BarcodeDrawFactory.Code128WithChecksum;
-        Facade facade = new Facade();
+        private Code128BarcodeDraw bdf = BarcodeDrawFactory.Code128WithChecksum;
+        private Facade facade = new Facade();
 
 
         //OK
@@ -22,7 +22,6 @@ namespace EstacionamentoWebApp.Controllers
         //deve ser capaz de informar o número atual de vagas livres
         public ActionResult Index()
         {
-            Facade facade = new Facade();
             var num = facade.nDeVagasDisponiveis();
             ViewBag.qntd = num;
             

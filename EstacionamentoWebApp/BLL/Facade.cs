@@ -16,6 +16,7 @@ namespace EstacionamentoWebApp.BLL
         CancelaSaida cancSaida;
         BarCodeGeneratorTM bcg;
         Guiche guiche;
+        GeradorDeDataTM clock;
 
         public Facade()
         {
@@ -25,6 +26,7 @@ namespace EstacionamentoWebApp.BLL
             cancela = new Cancela();
             cancSaida = new CancelaSaida();
             bcg = new BarCodeGeneratorTM();
+            clock = new GeradorDeDataTM();
             guiche = new Guiche();
         }
 
@@ -101,10 +103,12 @@ namespace EstacionamentoWebApp.BLL
         //7 - Liberação de ticket sem pagamento.Em alguns casos especiais, o funcionário do guichê pode liberar
         //diretamente o ticket, sem o pagamento ter sido efetuado.Neste caso, o sistema deve armazenar a
         //informação do motivo de liberação do ticket.Os possíveis motivos são pré-definidos e contêm pelos menos
-        //a opção “outros” para indicar casos não previstos.        public void liberaSemPagar(string codigo, string motivo)
+        //a opção “outros” para indicar casos não previstos.
+        public void liberaSemPagar(string codigo, string motivo)
         {
             guiche.liberaSPagamento(codigo, motivo);
-        }
+        }
+
 
         public string geraCodigoDeBarrasTM(System.Drawing.Image img)
         {
@@ -123,6 +127,31 @@ namespace EstacionamentoWebApp.BLL
         {
             return intCfg.codExiste(cod);
         }
+
+        public IEnumerable<Estacionamento> getListaDeTickets()
+        {
+            return intCfg.getListaDeEstacionamentos();
+        }
+
+        public IEnumerable<Mes> getMeses()
+        {
+            return clock.meses();
+        }
+
+        public int mes(DateTime? ticket)
+        {
+            return clock.getMes(ticket);
+                }
+
+        public int NumeroMesPeloNome(string n)
+        {
+            return clock.getnMesPorNomeMes(n);
+        }
+
+        //public int dia(DateTime dt)
+        //{
+        //    return clock.getDia(dt);
+        //}
 
 
     }

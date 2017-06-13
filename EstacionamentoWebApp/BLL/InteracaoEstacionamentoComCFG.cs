@@ -121,5 +121,10 @@ namespace EstacionamentoWebApp.BLL
             }
             return false;
         }
+
+        public IEnumerable<Estacionamento> getListaDeEstacionamentos()
+        {
+            return estDAO.getEstacionamentos();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL.Model.POCO;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace EstacionamentoWebApp.BLL
 {
     public class GeradorDeDataTM
     {
+        public Mes m = new Mes();
+
         public string now()
         {
             DateTime time = DateTime.Now;
@@ -54,6 +57,32 @@ namespace EstacionamentoWebApp.BLL
             int horas = (int)horasDouble;
             return horas;
         }
+
+        public IEnumerable<Mes> meses()
+        {
+            var list = m.getMeses();
+            return list;
+        }
+
+        public int getMes(DateTime? dt)
+        {
+            int aux = dt.Value.Month;
+            return aux;
+        }
+
+        //public int getDia(DateTime dataTicket)
+        //{
+        //    int aux = dt.Value.Day;
+        //    return aux;
+        //}
+
+        public int getnMesPorNomeMes(string nome)
+        {
+            return m.getnMesPorNomeMes(nome);             
+        }
+
+
+
 
     }
 }
