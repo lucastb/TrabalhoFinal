@@ -63,10 +63,7 @@ namespace EstacionamentoWebApp.Models
     }
 
     public class RegisterViewModel
-    {
-        [Display(Name = "Name ")]
-        public string FullName { get; set; }
-
+    {       
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

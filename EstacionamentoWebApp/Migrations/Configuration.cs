@@ -48,6 +48,22 @@ namespace EstacionamentoWebApp.Migrations
             };
 
             CFG.ForEach(s => context.CFG_Estacionamentos.AddOrUpdate(e => e.codigo_estacionamento, s));
+            context.SaveChanges();            
+
+            var Ests = new List<Estacionamento> {
+                //new CultureInfo("en-US"))
+               
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact(gd.now(), format , new CultureInfo("en-US")),  emitido_por = "Cancela", valor_pago = 0.0, Liberado = false },
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact("05-29-2017 10:30:00", format, new CultureInfo("en-US")),  dt_hr_saida =  DateTime.ParseExact("05-29-2017 12:30:00", format, new CultureInfo("en-US")), valor_pago = 5.00, emitido_por = "Cancela", Liberado = true },
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact(gd.now(),format,new CultureInfo("en-US")),  emitido_por = "Cancela", Liberado = false},
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact(gd.now(),format, new CultureInfo("en-US")), emitido_por = "Cancela", Liberado = false},
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact("05-29-2017 10:30:00", format ,new CultureInfo("en-US")),  dt_hr_saida =  DateTime.ParseExact(gd.now(), format ,new CultureInfo("en-US")) , emitido_por = "Cancela", Liberado = true },
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact("06-11-2017 10:30:00", format ,new CultureInfo("en-US")), emitido_por = "Guichê", Liberado = false, CodEspecial = "TKTEXT" },
+            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact("06-12-2017 10:30:00", format ,new CultureInfo("en-US")), emitido_por = "Guichê", Liberado = false, CodEspecial = "TKTEXT" },
+
+            };
+
+            Ests.ForEach(s => context.Estacionamentos.AddOrUpdate(f => f.EstacionamentoId, s));
             context.SaveChanges();
 
 
@@ -59,22 +75,6 @@ namespace EstacionamentoWebApp.Migrations
             new Usuario { nome = "Maria Pinheiro",  funcao =  "Guiche", email = "naein@email.com", senha = "321" },
             };
             user.ForEach(s => context.Users.AddOrUpdate(f => f.UsuarioID, s));
-            context.SaveChanges();
-
-            var Ests = new List<Estacionamento> {
-                //new CultureInfo("en-US"))
-               
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact(gd.now(), format , new CultureInfo("en-US")),  emitido_por = "Cancela", valor_pago = 0.0, liberacao_especial = "Nenhuma", Liberado = false },
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact("05-29-2017 10:30:00", format, new CultureInfo("en-US")),  dt_hr_saida =  DateTime.ParseExact(gd.now(), format ,new CultureInfo("en-US")) , emitido_por = "Cancela", Liberado = true },
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada = DateTime.ParseExact(gd.now(),format,new CultureInfo("en-US")),  emitido_por = "Guichê", Liberado = false},
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact(gd.now(),format, new CultureInfo("en-US")), emitido_por = "Guichê", Liberado = false},
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact("05-29-2017 10:30:00", format ,new CultureInfo("en-US")),  dt_hr_saida =  DateTime.ParseExact(gd.now(), format ,new CultureInfo("en-US")) , emitido_por = "Cancela", Liberado = true },
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact(gd.now(),format, new CultureInfo("en-US")), emitido_por = "Guichê", Liberado = false },
-            new Estacionamento { ticket = bcg.generateCode(), dt_hr_entrada =  DateTime.ParseExact(gd.now(),format, new CultureInfo("en-US")), emitido_por = "Guichê", Liberado = false },
-
-            };
-
-            Ests.ForEach(s => context.Estacionamentos.AddOrUpdate(f => f.EstacionamentoId, s));
             context.SaveChanges();
 
         } }
