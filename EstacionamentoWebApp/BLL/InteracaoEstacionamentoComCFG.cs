@@ -126,5 +126,19 @@ namespace EstacionamentoWebApp.BLL
         {
             return estDAO.getEstacionamentos();
         }
+
+        public IEnumerable<Estacionamento> getEstacionamentosQueTemSaida()
+        {
+            List<Estacionamento> est = new List<Estacionamento>();
+            var aux = getListaDeEstacionamentos();
+            foreach(Estacionamento e in aux)
+            {
+                if(e.dt_hr_saida != null)
+                {
+                    est.Add(e);
+                }
+            }
+            return est;
+        }
     }
 }

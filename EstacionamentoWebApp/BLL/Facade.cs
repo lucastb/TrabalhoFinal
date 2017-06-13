@@ -133,6 +133,11 @@ namespace EstacionamentoWebApp.BLL
             return intCfg.getListaDeEstacionamentos();
         }
 
+        public IEnumerable<Estacionamento> getEstatacionamentosCSaida()
+        {
+            return intCfg.getEstacionamentosQueTemSaida();
+        }
+
         public IEnumerable<Mes> getMeses()
         {
             return clock.meses();

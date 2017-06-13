@@ -2,6 +2,9 @@ namespace EstacionamentoWebApp.Migrations
 {
     using EstacionamentoWebApp.BLL;
     using EstacionamentoWebApp.Controllers;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using PL.Model.POCO;
     using System;
     using System.Collections.Generic;
@@ -9,6 +12,7 @@ namespace EstacionamentoWebApp.Migrations
     using System.Data.Entity.Migrations;
     using System.Globalization;
     using System.Linq;
+
 
     internal sealed class Configuration : DbMigrationsConfiguration<PL.Model.EstacionamentoContext>
     {
@@ -77,7 +81,9 @@ namespace EstacionamentoWebApp.Migrations
             user.ForEach(s => context.Users.AddOrUpdate(f => f.UsuarioID, s));
             context.SaveChanges();
 
-        } }
+        }
+
+    }
 
 
     }

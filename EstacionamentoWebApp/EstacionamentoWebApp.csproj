@@ -221,6 +221,7 @@
     <Compile Include="BLL\InteracaoUsuarioEstacionamento.cs" />
     <Compile Include="BLL\IntercaoMotivos.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministrativoController.cs" />
     <Compile Include="Controllers\GuicheController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -352,8 +353,9 @@
     <Content Include="Views\Guiche\TicketEmitidoGuiche.cshtml" />
     <Content Include="Views\Guiche\ligaMotivo.cshtml" />
     <Content Include="Views\Manage\CodInvalidoM.cshtml" />
-    <Content Include="Views\Guiche\Administrativo.cshtml" />
     <Content Include="Views\Guiche\Vazio.cshtml" />
+    <Content Include="Views\Manage\Administrativo.cshtml" />
+    <Content Include="Views\Administrativo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

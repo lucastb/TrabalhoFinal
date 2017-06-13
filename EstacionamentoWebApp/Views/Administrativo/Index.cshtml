@@ -1,0 +1,24 @@
+﻿@model IEnumerable<PL.Model.POCO.Estacionamento>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Valor Total</h1>
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Codigo do Ticket </th>
+        <th>Data de Saída </th>
+        <th>Valor Pago </th>
+
+    </tr>
+    @foreach (var d in Model)
+    {
+        <tr>
+            <td>@d.ticket</td>
+            <td>@d.dt_hr_saida</td>
+            <td>@d.valor_pago</td>
+
+        </tr>
+    }
+</table>  

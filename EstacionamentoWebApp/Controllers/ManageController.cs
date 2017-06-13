@@ -56,7 +56,7 @@ namespace EstacionamentoWebApp.Controllers
                 ViewBag.code = tkt.ticket;
                 Code128BarcodeDraw bdf = BarcodeDrawFactory.Code128WithChecksum;
                 ViewBag.codigoDeBarras = f.geraCodigoDeBarrasTM(bdf.Draw(tkt.ticket, 50));
-                return View("~/Views/Guiche/TicketEmitidoGuiche.cshtml");
+                return View("~/Views/Guiche/TicketEmitidoGuiche");
 
             }
         }
@@ -69,7 +69,7 @@ namespace EstacionamentoWebApp.Controllers
                 return View("CodInvalidoM");
             }
             ViewBag.preco = "Valor: R$"+f.precoPagar(codigo);
-            return View("~/Views/Manage/TicketPagoNoGuiche.cshtml");
+            return View("TicketPagoNoGuiche");
 
         }
 
@@ -82,7 +82,7 @@ namespace EstacionamentoWebApp.Controllers
             }
             f.pagaTicket(codigo);
             ViewBag.pago = "Ticket pago!";
-            return View("~/Views/Manage/TicketPagoNoGuiche.cshtml");
+            return View("TicketPagoNoGuiche");
         }
 
         [Authorize]
@@ -94,7 +94,7 @@ namespace EstacionamentoWebApp.Controllers
             }
             f.liberaSemPagar(codigo, motivo);
             ViewBag.liberado = "Ticket liberado para saída";
-            return View("~/Views/Manage/TicketPagoNoGuiche.cshtml");
+            return View("TicketPagoNoGuiche");
         }
 
         [Authorize]
@@ -123,7 +123,14 @@ namespace EstacionamentoWebApp.Controllers
         [Authorize(Users ="admin@psa.br")]
         public ActionResult adm()
         {
-            return View("~/Views/Guiche/Administrativo.cshtml");
+            return View("Administrativo");
+        }
+
+        [Authorize(Users = "admin@psa.br")]
+        public ActionResult Admin()
+        {
+            var ticket = f.getEstatacionamentosCSaida();
+            return View("~/Views/Administrativo/Index.cshtml", ticket);
         }
 
 
