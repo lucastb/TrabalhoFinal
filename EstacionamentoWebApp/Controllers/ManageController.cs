@@ -56,7 +56,7 @@ namespace EstacionamentoWebApp.Controllers
                 ViewBag.code = tkt.ticket;
                 Code128BarcodeDraw bdf = BarcodeDrawFactory.Code128WithChecksum;
                 ViewBag.codigoDeBarras = f.geraCodigoDeBarrasTM(bdf.Draw(tkt.ticket, 50));
-                return View("~/Views/Guiche/TicketEmitidoGuiche");
+                return View("~/Views/Guiche/TicketEmitidoGuiche.cshtml");
 
             }
         }
@@ -133,6 +133,14 @@ namespace EstacionamentoWebApp.Controllers
             ViewBag.valorT = f.getValorTotalPago();
             return View("~/Views/Administrativo/Index.cshtml", ticket);
         }
+
+        [Authorize(Users = "admin@psa.br")]
+        public ActionResult nTicketPagTotal()
+        {
+            int qntd = f.nDeTicketsPagosTotal();
+            return View("~/Views/Administrativo/nTicketsPagos.cshtml", qntd);
+        }
+
 
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)

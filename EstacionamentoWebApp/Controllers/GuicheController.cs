@@ -21,6 +21,10 @@ namespace EstacionamentoWebApp.Controllers
             return View();
         }
 
+        public ActionResult TicketEmitidoGuiche()
+        {
+            return View();
+        }
         
 
         public ActionResult index()

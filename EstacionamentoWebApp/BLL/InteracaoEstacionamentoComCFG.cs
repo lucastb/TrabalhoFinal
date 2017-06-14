@@ -14,12 +14,14 @@ namespace EstacionamentoWebApp.BLL
         EstacionamentoDAOImpl estDAO;
         CfgDAOImpl cfgDAO;
         BarCodeGeneratorTM geradorCod;
+        GeradorDeDataTM clock;
 
         public InteracaoEstacionamentoComCFG()
         {
             estDAO = new EstacionamentoDAOImpl();
             cfgDAO = new CfgDAOImpl();
             geradorCod = new BarCodeGeneratorTM();
+            clock = new GeradorDeDataTM();
         }
 
        
@@ -127,6 +129,10 @@ namespace EstacionamentoWebApp.BLL
             return estDAO.getEstacionamentos();
         }
 
+#region parte administrativa
+        //O sistema deve possuir também um módulo gerencial que permita obter as seguintes informações relativas ao uso
+        //do estacionamento:
+
         public IEnumerable<Estacionamento> getEstacionamentosQueTemSaida()
         {
             List<Estacionamento> est = new List<Estacionamento>();
@@ -140,5 +146,35 @@ namespace EstacionamentoWebApp.BLL
             }
             return est;
         }
+
+        public int getNTotalDeTicketsPagos()
+        {
+            int valor = 0;
+            var list = getListaDeEstacionamentos();
+            foreach(Estacionamento est in list)
+            {
+                if(est.valor_pago > 0)
+                {
+                    valor++;
+                }
+            }
+            return valor;
+        }
+
+        public int getNTicketPagosMes(int mes)
+        {
+            int qntd = 0;
+            var list = getListaDeEstacionamentos();
+            foreach(Estacionamento est in list)
+            {
+                if(clock.getMes(est.dt_hr_saida) == mes)
+                {
+                    qntd++;
+                }
+            }
+            return qntd;
+        }
+
+#endregion
     }
 }

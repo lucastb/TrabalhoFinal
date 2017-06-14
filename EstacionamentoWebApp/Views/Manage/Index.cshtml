@@ -3,18 +3,29 @@
     ViewBag.Title = "Manage";
 }
     <h1>Guichê</h1>
-    <form action="Manage/TicketPagoNoGuiche">
-        <center>  <input type="submit" value="FINANCEIRO"></center>
-    </form>
+    <!--<form action="Manage/TicketPagoNoGuiche">
+        <center>  
+        <button class="btn btn-primary">Financeiro</button>
+        <input type="submit" value="FINANCEIRO"></center>
+    </form>!-->
+  
+    <center>
+        <a class="btn btn-primary btn-lg" href="/Manage/TicketPagoNoGuiche" target="_blank" role="button">Financeiro</a>
+    </center>
     <br />
     <br />
-    <form action="Manage/EmitirTicketGuiche">
-        <center>  <input type="submit" value="EMITIR TICKET E LIBERAÇÃO ESPECIAL"></center>
-    </form>    
+<center>
+    <a class="btn btn-primary btn-lg" href="/Manage/EmitirTicketGuiche" target="_blank" role="button">Emitir ticket e Liberação Especial</a>
+</center>   
 <br /><br />
-<form action="Manage/adm">
+<center>
+    <a class="btn btn-primary btn-lg" href="/Manage/adm" target="_blank" role="button">Administrativo</a>
+</center>   
+
+
+@*<form action="Manage/adm">
     <center>  <input type="submit" value="ADMINISTRATIVO"></center>
-</form>
+</form>*@
 
  
 

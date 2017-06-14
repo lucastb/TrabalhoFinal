@@ -356,6 +356,7 @@
     <Content Include="Views\Guiche\Vazio.cshtml" />
     <Content Include="Views\Manage\Administrativo.cshtml" />
     <Content Include="Views\Administrativo\Index.cshtml" />
+    <Content Include="Views\Administrativo\nTicketsPagos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

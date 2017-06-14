@@ -128,6 +128,9 @@ namespace EstacionamentoWebApp.BLL
             return intCfg.codExiste(cod);
         }
 
+
+        //O sistema deve possuir também um módulo gerencial que permita obter as seguintes informações relativas ao uso
+        //do estacionamento:
         #region Informações administrativas
 
         public IEnumerable<Estacionamento> getListaDeTickets()
@@ -151,7 +154,7 @@ namespace EstacionamentoWebApp.BLL
             return clock.meses();
         }
 
-        public int mes(DateTime? ticket)
+        public int getMes(DateTime? ticket)
         {
             return clock.getMes(ticket);
                 }
@@ -165,6 +168,17 @@ namespace EstacionamentoWebApp.BLL
         //{
         //    return clock.getDia(dt);
         //}
+
+        public int nDeTicketsPagosTotal()
+        {
+            return intCfg.getNTotalDeTicketsPagos();
+        }
+
+        public int nDeTicketsPagosPorMes(string nomeDoMes)
+        {
+            int mes = clock.getnMesPorNomeMes(nomeDoMes);
+           return  intCfg.getNTicketPagosMes(mes);
+        }
 
         #endregion
     }

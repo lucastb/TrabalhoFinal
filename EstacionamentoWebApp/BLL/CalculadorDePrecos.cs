@@ -127,7 +127,7 @@ namespace EstacionamentoWebApp.BLL
 
         }
 
-        
+        //ARRUMARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
         public double calculaPreco(string cod)
         {
             var ticketObj = estDAO.GetEstacionamentoByID(cod);

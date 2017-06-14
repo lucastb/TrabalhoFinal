@@ -15,6 +15,11 @@ namespace EstacionamentoWebApp.Controllers
         {
             return View();
         }
+
+        public ActionResult nTicketsPagos()
+        {
+            return View();
+        }
     }
 }
 ////public ViewResult Administrativo(string searchString, string sortOrder, int? SelectedDate)
