@@ -51,10 +51,14 @@ namespace EstacionamentoWebApp.Controllers.Tests
         [TestMethod()]
         public void TesteMinutos()
         {
-            var vaga = dao.GetEstacionamentoByID("6");
-            var vaga2 = dao.GetEstacionamentoByID("7");
-            Console.WriteLine(gera.diferencaMinutos(DateTime.Now, vaga.dt_hr_entrada));
-            Console.WriteLine(gera.diferencaMinutos(DateTime.Now, vaga2.dt_hr_entrada));
+            var vaga = dao.GetEstacionamentoByID("12W");
+            var vaga2 = dao.GetEstacionamentoByID("ASD");
+            //var diasDouble = (hoje - diaEntrada).TotalDays;
+
+            //Console.WriteLine(gera.diferencaMinutos(DateTime.Now, vaga.dt_hr_entrada));
+            //Console.WriteLine(gera.diferencaDias(DateTime.Now, vaga2.dt_hr_entrada));
+            Console.WriteLine((DateTime.Now - vaga2.dt_hr_entrada).TotalDays);
+
 
         }
 

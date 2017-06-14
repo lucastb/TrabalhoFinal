@@ -1,4 +1,5 @@
 ﻿using EstacionamentoWebApp.BLL;
+using PL.Model.POCO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,22 @@ namespace EstacionamentoWebApp.Controllers
     {
         private Facade f = new Facade();
         // GET: Administrativo
-        public ActionResult Index()
+        public ActionResult Index(int mesEscolhido)
         {
-            return View();
+            //GAMBIARRA FAM
+            var ticket = f.getEstatacionamentosCSaida();
+            var listAux = f.tryme(ticket, mesEscolhido);
+
+
+            ViewBag.valorT = f.getValorTotalPago();
+
+            return View(listAux);
         }
+
+
+
+
+
 
         public ActionResult nTicketsPagos()
         {

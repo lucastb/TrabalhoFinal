@@ -5,10 +5,28 @@
 
 <h1>Valor Total</h1>
 
+@*@using (Html.BeginForm())
+{
+    <p>
+        Find by title: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+        Select Data de Saída: @Html.DropDownList("SelectedDate", "All")
+        <input type="submit" value="Filter" />
+    </p>
+}*@
+
+<form action="/Administrativo/Index">
+
+    <center><input type="number" name="mesEscolhido"></center><br>
+    <center>  <input type="submit" class="btn btn-primary" value="nigggg!"></center>
+</form>
+
+
+
 <table class="table table-bordered table-hover table-striped">
     <tr>
         <th>Codigo do Ticket </th>
-        <th>Data de Saída </th>
+        <th>Data de Saída</th>
         <th>Valor Pago </th>
 
     </tr>

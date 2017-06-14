@@ -130,6 +130,7 @@ namespace EstacionamentoWebApp.Controllers
         public ActionResult Admin()
         {
             var ticket = f.getEstatacionamentosCSaida();
+
             ViewBag.valorT = f.getValorTotalPago();
             return View("~/Views/Administrativo/Index.cshtml", ticket);
         }
@@ -138,7 +139,7 @@ namespace EstacionamentoWebApp.Controllers
         public ActionResult nTicketPagTotal()
         {
             int qntd = f.nDeTicketsPagosTotal();
-            return View("~/Views/Administrativo/nTicketsPagos.cshtml", qntd);
+            return View("~/Views/Administrativo/nTicketsPagos.cshtml");
         }
 
 

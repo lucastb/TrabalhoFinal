@@ -127,55 +127,159 @@ namespace EstacionamentoWebApp.BLL
 
         }
 
+        #region calcularPreco velho
         //ARRUMARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-        public double calculaPreco(string cod)
+        //public double calculaPreco(string cod)
+        //{
+        //    var ticketObj = estDAO.GetEstacionamentoByID(cod);
+        //    if (ticketObj.CodEspecial != null)
+        //    {
+
+        //        return cfg.GetConfiguracao().valorFixoExtravio; 
+        //    }
+
+        //    if (checaCortesia(cod) == true)
+        //    {
+        //        return 0;
+        //    }
+
+        //    double precoPagar = 0.0;            
+        //    var ticket = estDAO.GetEstacionamentoByID(cod).dt_hr_entrada;
+        //    var preco3Horas = cfg.GetConfiguracao().valorFixo3Horas;
+        //    var precoPernoite = cfg.GetConfiguracao().valorFixoPernoite;
+        //    var precoFixoAcima3Horas = cfg.GetConfiguracao().valorFixoAcima3Horas;
+
+
+        //    if (checaPernoite(cod) == false)
+        //    {
+        //        var minutos = clock.diferencaMinutos(DateTime.Now, ticket);
+
+        //        if (minutos <= 180)//menor ou igual 3 horas
+        //        {
+        //            precoPagar = preco3Horas;
+        //            return precoPagar;
+        //        }
+        //        precoPagar = precoFixoAcima3Horas;
+        //        return precoPagar;              
+        //    }
+
+        //    if(checaPernoite(cod) == true)
+        //    {
+        //        int dias = clock.diferencaDias(DateTime.Now, ticket);
+        //        if(dias > 1)
+        //        {
+        //            precoPagar = precoPernoite * dias;
+        //            return precoPagar;
+        //        }
+        //        precoPagar = precoPernoite;
+        //        return precoPagar;
+
+        //    }
+        //        return -1;
+        //}
+        #endregion
+
+        #region Métodos para calcular preço
+
+        public double calculaPrecoDeTicketExtraviado(string cod)
         {
+            double precoPagar = 0;
             var ticketObj = estDAO.GetEstacionamentoByID(cod);
-            if (ticketObj.CodEspecial != null)
-            {
-
-                return cfg.GetConfiguracao().valorFixoExtravio; 
-            }
-
-            if (checaCortesia(cod) == true)
-            {
-                return 0;
-            }
-
-            double precoPagar = 0.0;            
-            var ticket = estDAO.GetEstacionamentoByID(cod).dt_hr_entrada;
-            var preco3Horas = cfg.GetConfiguracao().valorFixo3Horas;
-            var precoPernoite = cfg.GetConfiguracao().valorFixoPernoite;
-            var precoFixoAcima3Horas = cfg.GetConfiguracao().valorFixoAcima3Horas;
-           
+            var precoFixoExtravio = cfg.GetConfiguracao().valorFixoExtravio;
+            var ticket = ticketObj.dt_hr_entrada;
 
             if (checaPernoite(cod) == false)
             {
-                var minutos = clock.diferencaMinutos(DateTime.Now, ticket);
-
-                if (minutos <= 180)//menor ou igual 3 horas
+                return precoFixoExtravio;
+            }else
                 {
-                    precoPagar = preco3Horas;
-                    return precoPagar;
-                }
-                precoPagar = precoFixoAcima3Horas;
-                return precoPagar;              
-            }
-
-            if(checaPernoite(cod) == true)
-            {
+                var precoPernoite = cfg.GetConfiguracao().valorFixoPernoite;
                 int dias = clock.diferencaDias(DateTime.Now, ticket);
-                if(dias > 1)
-                {
-                    precoPagar = precoPernoite * dias;
+                    if (dias > 1)
+                    {
+                        precoPagar = precoFixoExtravio + precoPernoite * dias;
+                        return precoPagar;
+                    }
+                    precoPagar = precoPernoite + precoFixoExtravio;
                     return precoPagar;
                 }
+        }
+
+
+        #region ticket n extraviado
+        public double valorTicketSemPernoite(string cod)
+        {
+            double precoPagar = 0;
+            var ticketObj = estDAO.GetEstacionamentoByID(cod);
+            var ticket = ticketObj.dt_hr_entrada;
+            var minutos = clock.diferencaMinutos(DateTime.Now, ticket);
+
+            if (minutos <= 180)//menor ou igual 3 horas
+            {
+                var preco3Horas = cfg.GetConfiguracao().valorFixo3Horas;
+                precoPagar = preco3Horas;
+                return precoPagar;
+            }
+            else
+            {
+                var precoFixoAcima3Horas = cfg.GetConfiguracao().valorFixoAcima3Horas;
+                precoPagar = precoFixoAcima3Horas;
+                return precoPagar;
+            }
+        }
+
+        public double valorTicketComPernoite(string cod)
+        {
+            double precoPagar = 0;
+            var ticketObj = estDAO.GetEstacionamentoByID(cod);
+            var ticket = ticketObj.dt_hr_entrada;
+            var precoPernoite = cfg.GetConfiguracao().valorFixoPernoite;
+            int dias = clock.diferencaDias(DateTime.Now, ticket);
+
+            if (dias > 1)
+            {
+                precoPagar = precoPernoite * dias;
+                return precoPagar;
+            }
+            else
+            {
                 precoPagar = precoPernoite;
                 return precoPagar;
-
             }
-                return -1;
         }
+        #endregion
+
+        #endregion
+
+        public double calculaPreco(string cod)
+        {
+            var ticket = estDAO.GetEstacionamentoByID(cod);
+            double valor = 0;
+            if(ticket.CodEspecial != null)
+            {
+                valor = calculaPrecoDeTicketExtraviado(cod);
+                return valor;
+            }else
+            {
+                if(checaCortesia(cod) == true)
+                {
+                    return 0;
+                }else
+                {
+                    if(checaPernoite(cod) == true)
+                    {
+                        valor = valorTicketComPernoite(cod);
+                        return valor;
+                    }else
+                    {
+                        valor = valorTicketSemPernoite(cod);
+                        return valor;
+                    }
+                }
+            }
+        }
+
+
 
         public double valorTotalPago()
         {

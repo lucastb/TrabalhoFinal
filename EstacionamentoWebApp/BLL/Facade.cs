@@ -130,7 +130,8 @@ namespace EstacionamentoWebApp.BLL
 
 
         //O sistema deve possuir também um módulo gerencial que permita obter as seguintes informações relativas ao uso
-        //do estacionamento:
+        //do estacionamento:
+
         #region Informações administrativas
 
         public IEnumerable<Estacionamento> getListaDeTickets()
@@ -162,6 +163,21 @@ namespace EstacionamentoWebApp.BLL
         public int NumeroMesPeloNome(string n)
         {
             return clock.getnMesPorNomeMes(n);
+        }
+
+        //GAMBIARRANEITOR
+        public IEnumerable<Estacionamento> tryme(IEnumerable<Estacionamento> list, int n)
+        {
+            List<Estacionamento> aux = new List<Estacionamento>();
+
+                foreach(Estacionamento est in list)
+            {
+                if(est.dt_hr_saida.Value.Month == n)
+                {
+                    aux.Add(est);
+                }
+            }
+            return aux;            
         }
 
         //public int dia(DateTime dt)

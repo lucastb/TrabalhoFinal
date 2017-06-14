@@ -47,7 +47,16 @@ namespace EstacionamentoWebApp.BLL
         public int diferencaDias(DateTime hoje, DateTime diaEntrada)
         {
             var diasDouble = (hoje - diaEntrada).TotalDays;
-            int dias = (int)diasDouble;
+            int dias = 0;
+            if(DateTime.Now.Hour >= 2)
+            {
+                dias = (int)diasDouble;
+               dias = dias + 1;
+                return dias;
+
+
+            }
+             dias = (int)diasDouble;
             return dias;
         }
 
