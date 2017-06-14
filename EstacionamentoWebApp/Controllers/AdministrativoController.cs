@@ -12,13 +12,11 @@ namespace EstacionamentoWebApp.Controllers
     {
         private Facade f = new Facade();
         // GET: Administrativo
-        public ActionResult Index(int mesEscolhido)
+        [Authorize(Users = "admin@psa.br")]
+        public ActionResult Index(string mesEscolhido)
         {
-            //GAMBIARRA FAM
             var ticket = f.getEstatacionamentosCSaida();
             var listAux = f.tryme(ticket, mesEscolhido);
-
-
             ViewBag.valorT = f.getValorTotalPago();
 
             return View(listAux);

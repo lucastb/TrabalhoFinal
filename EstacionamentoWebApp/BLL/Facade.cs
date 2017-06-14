@@ -166,18 +166,26 @@ namespace EstacionamentoWebApp.BLL
         }
 
         //GAMBIARRANEITOR
-        public IEnumerable<Estacionamento> tryme(IEnumerable<Estacionamento> list, int n)
+        public IEnumerable<Estacionamento> tryme(IEnumerable<Estacionamento> list, string n)
         {
             List<Estacionamento> aux = new List<Estacionamento>();
-
-                foreach(Estacionamento est in list)
+            //int nAux = Int32.Parse(n);
+            if(n != null)
             {
-                if(est.dt_hr_saida.Value.Month == n)
+                foreach (Estacionamento est in list)
                 {
-                    aux.Add(est);
+                    if (est.dt_hr_saida.Value.Month == 6)
+                    {
+                        aux.Add(est);
+                    }
                 }
+                return aux;
+
+            }else
+            {
+                return list;
             }
-            return aux;            
+
         }
 
         //public int dia(DateTime dt)
