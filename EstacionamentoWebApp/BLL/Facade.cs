@@ -144,25 +144,69 @@ namespace EstacionamentoWebApp.BLL
             return intCfg.getEstacionamentosQueTemSaida();
         }
 
-        public double getValorTotalPago()
+        public IEnumerable<Estacionamento> getTicketsPagos()
         {
-            return calcP.valorTotalPago();
+            var aux = getEstatacionamentosCSaida();
+            return intCfg.getEstacionamentosQuePagaram(aux);
+        }
+
+        public double getValorTotalPago(IEnumerable<Estacionamento> list)
+        {
+            return calcP.valorTotalPago(list);
         }
             
 
-        public IEnumerable<Mes> getMeses()
-        {
-            return clock.meses();
-        }
+        //public IEnumerable<Mes> getMeses()
+        //{
+        //    return clock.meses();
+        //}
 
-        public int getMes(DateTime? ticket)
-        {
-            return clock.getMes(ticket);
-                }
+        //public int getMes(DateTime? ticket)
+        //{
+        //    return clock.getMes(ticket);
+        //        }
 
         public int numeroMesPeloNome(string nome)
         {
             return clock.getnMesPorNomeMes(nome);
+        }
+
+
+
+        public IEnumerable<Estacionamento> filtrar(IEnumerable<Estacionamento> list, string dia, string nomeDoMes)
+        {
+            var filtroMes = filtraMes(list, nomeDoMes);
+            int nDia = 0;
+            if (dia != "Todos")
+            {
+                 nDia = Int32.Parse(dia);
+
+            }
+            List<Estacionamento> aux = new List<Estacionamento>();
+            if (dia == "Todos" && nomeDoMes != "Todos")
+            {
+                return filtroMes;
+            }
+
+            if(nomeDoMes.Equals("Todos") && dia != "Todos")
+            {
+                var filtroDia = filtrarPeloDia(list, dia);
+            }
+
+            if (dia == "Todos" && nomeDoMes == "Todos")
+            {
+                return list;
+            }else
+            {
+                foreach(Estacionamento est in filtroMes)
+                {
+                    if(est.dt_hr_saida.Value.Day == nDia)
+                    {
+                        aux.Add(est);
+                    }
+                }
+                return aux;
+            }
         }
 
         public IEnumerable<Estacionamento> filtraMes(IEnumerable<Estacionamento> list, string nomeDoMes)
@@ -172,7 +216,7 @@ namespace EstacionamentoWebApp.BLL
             {
                 if (nomeDoMes.Equals("Todos"))
                 {
-                    return getEstatacionamentosCSaida();
+                    return getTicketsPagos();
                 }
                 int numeroMes = numeroMesPeloNome(nomeDoMes);
 
@@ -191,13 +235,27 @@ namespace EstacionamentoWebApp.BLL
             }
         }
 
-        //FAZER
         public IEnumerable<Estacionamento> filtrarPeloDia(IEnumerable<Estacionamento> listaDeTickets, string dia)
         {
             List<Estacionamento> aux = new List<Estacionamento>();
-            if(dia != null)
+            if (dia != null)
             {
-                
+                if (dia.Equals("Todos"))
+                {
+                    return getTicketsPagos();
+                }
+                int nDia = Int32.Parse(dia);
+                foreach(Estacionamento est in listaDeTickets)
+                {
+                    if(est.dt_hr_saida.Value.Day == nDia)
+                    {
+                        aux.Add(est);
+                    }
+                }
+                return aux;
+            }else
+            {
+                return listaDeTickets;
             }
 
         }
@@ -206,16 +264,16 @@ namespace EstacionamentoWebApp.BLL
         //    return clock.getDia(dt);
         //}
 
+        public int nDeTicketsPagosTotal(IEnumerable<Estacionamento> est)
+        {
+            return intCfg.getNTotalDeTicketsPagos(est);
+        }
+
         public int nDeTicketsPagosTotal()
         {
             return intCfg.getNTotalDeTicketsPagos();
         }
 
-        public int nDeTicketsPagosPorMes(string nomeDoMes)
-        {
-            int mes = clock.getnMesPorNomeMes(nomeDoMes);
-           return  intCfg.getNTicketPagosMes(mes);
-        }
 
         #endregion
     }

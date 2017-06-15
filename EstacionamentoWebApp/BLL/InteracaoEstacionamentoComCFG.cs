@@ -136,45 +136,85 @@ namespace EstacionamentoWebApp.BLL
         public IEnumerable<Estacionamento> getEstacionamentosQueTemSaida()
         {
             List<Estacionamento> est = new List<Estacionamento>();
+            
             var aux = getListaDeEstacionamentos();
-            foreach(Estacionamento e in aux)
+            if(aux.Count() > 0)
             {
-                if(e.dt_hr_saida != null)
+                foreach (Estacionamento e in aux)
                 {
-                    est.Add(e);
+                    if (e.dt_hr_saida != null)
+                    {
+                        est.Add(e);
+                    }
                 }
-            }
-            return est;
+                return est;
+
+            }else { return est; }
         }
+
+        public IEnumerable<Estacionamento> getEstacionamentosQuePagaram(IEnumerable<Estacionamento> estacionamentosComSaida)
+        {
+            if (estacionamentosComSaida.Count() == 0)
+            {
+                return estacionamentosComSaida;
+            }
+            else
+            {
+                List<Estacionamento> est = new List<Estacionamento>();
+                foreach (Estacionamento e in estacionamentosComSaida)
+                {
+                    if (e.valor_pago > 0)
+                    {
+                        est.Add(e);
+                    }
+                }
+                return est;
+
+            }
+        }
+
+
+        public IEnumerable<Estacionamento> getEstacionamentosSemPagamento(IEnumerable<Estacionamento> estacionamentosComSaida)
+        {
+            if (estacionamentosComSaida.Count() == 0)
+            {
+                return estacionamentosComSaida;
+            }
+            else
+            {
+                List<Estacionamento> est = new List<Estacionamento>();
+                foreach (Estacionamento e in estacionamentosComSaida)
+                {
+                    if (e.valor_pago == 0)
+                    {
+                        est.Add(e);
+                    }
+                }
+                return est;
+
+            }
+        }
+
+
+
 
         public int getNTotalDeTicketsPagos()
         {
-            int valor = 0;
-            var list = getListaDeEstacionamentos();
-            foreach(Estacionamento est in list)
-            {
-                if(est.valor_pago > 0)
-                {
-                    valor++;
-                }
-            }
-            return valor;
-        }
-
-        public int getNTicketPagosMes(int mes)
-        {
-            int qntd = 0;
-            var list = getListaDeEstacionamentos();
-            foreach(Estacionamento est in list)
-            {
-                if(clock.getMes(est.dt_hr_saida) == mes)
-                {
-                    qntd++;
-                }
-            }
+            int qntd = getEstacionamentosQuePagaram(getEstacionamentosQueTemSaida()).Count();
             return qntd;
         }
 
-#endregion
+        public int getNTotalDeTicketsPagos(IEnumerable<Estacionamento> est)
+        {
+            return est.Count();
+        }
+
+        public int numeroTicketsLiberadosSemPagamento()
+        {
+            int qntd = getEstacionamentosSemPagamento(getEstacionamentosQueTemSaida()).Count();
+            return qntd;
+        }
+
+        #endregion
     }
 }

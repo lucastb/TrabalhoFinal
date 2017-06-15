@@ -4,10 +4,10 @@
 }
 
 <h1>Valor Total</h1>
-
+<h2>Filtrar por dia e mês</h2>
 <form action="/Administrativo/Index">
-    <p>
-        <select class="form-control" required name="mesEscolhido">
+    
+       Mês <select class="form-control" required name="mesEscolhido">
             <option>Todos</option>
             <option>Janeiro</option>
             <option>Fevereiro</option>
@@ -23,7 +23,7 @@
             <option>Dezembro</option>
         </select>
         <br />
-        <select class="form-control" required name="mesEscolhido">
+      Dia  <select class="form-control" required name="diaEscolhido">
             <option>Todos</option>
             <option>1</option>
             <option>2</option>
@@ -57,13 +57,15 @@
             <option>30</option>
             <option>31</option>
         </select>
-
-        <CENTER><input type="submit" class="btn btn-primary" value="Filtrar"></CENTER>
-    </p>
+    <br />
+        <input type="submit" class="btn btn-primary" value="Filtrar">
+    
 </form>
 
-
-
+<br />
+<br />
+<p><h3><b>Valor total: R$@ViewBag.ValorT,00</b></h3></p>
+<br />
 <table class="table table-bordered table-hover table-striped">
     <tr>
         <th>Codigo do Ticket </th>
@@ -82,4 +84,3 @@
     }
 </table>  
 
-<p>Valor total: @ViewBag.ValorT</p>

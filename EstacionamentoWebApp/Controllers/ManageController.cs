@@ -129,19 +129,25 @@ namespace EstacionamentoWebApp.Controllers
         [Authorize(Users = "admin@psa.br")]
         public ActionResult Admin()
         {
-            var ticket = f.getEstatacionamentosCSaida();
+            var ticket = f.getTicketsPagos();
 
-            ViewBag.valorT = f.getValorTotalPago();
+            ViewBag.valorT = f.getValorTotalPago(ticket);
             return View("~/Views/Administrativo/Index.cshtml", ticket);
         }
 
         [Authorize(Users = "admin@psa.br")]
         public ActionResult nTicketPagTotal()
         {
-            int qntd = f.nDeTicketsPagosTotal();
-            return View("~/Views/Administrativo/nTicketsPagos.cshtml");
+            var ticket = f.getTicketsPagos();
+            ViewBag.qntd = f.nDeTicketsPagosTotal();
+            return View("~/Views/Administrativo/nTicketsPagos.cshtml", ticket);
         }
 
+        [Authorize(Users = "admin@psa.br")]
+        public ActionResult ticketsLiberadoSemPagamento()
+        {
+            return View("~/Views/Administrativo/ticketsLiberadoSemPagamento.cshtml");
+        }
 
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)

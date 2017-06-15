@@ -13,23 +13,32 @@ namespace EstacionamentoWebApp.Controllers
         private Facade f = new Facade();
         // GET: Administrativo
         [Authorize(Users = "admin@psa.br")]
-        public ActionResult Index(string mesEscolhido)
+        public ActionResult Index(string mesEscolhido, string diaEscolhido)
         {
-            var listaTotalDeTickets = f.getEstatacionamentosCSaida();
-            var listAux = f.filtraMes(listaTotalDeTickets, mesEscolhido);
-            ViewBag.valorT = f.getValorTotalPago();
+            var listaTotalDeTickets = f.getTicketsPagos();
+            var listAux = f.filtrar(listaTotalDeTickets, diaEscolhido, mesEscolhido);
+            ViewBag.valorT = f.getValorTotalPago(listAux);
             return View(listAux);
         }
 
 
 
+        [Authorize(Users = "admin@psa.br")]
+        public ActionResult nTicketsPagos(string mesEscolhido, string diaEscolhido)
+        {
+            var listaTotalDeTickets = f.getTicketsPagos();
+            var listAux = f.filtrar(listaTotalDeTickets, diaEscolhido, mesEscolhido);
+            ViewBag.qntd = f.nDeTicketsPagosTotal(listAux);
+            return View(listAux);
+        }
 
-
-
-        public ActionResult nTicketsPagos()
+        [Authorize(Users = "admin@psa.br")]
+        public ActionResult ticketsLiberadoSemPagamento()
         {
             return View();
         }
+
+
     }
 }
 ////public ViewResult Administrativo(string searchString, string sortOrder, int? SelectedDate)

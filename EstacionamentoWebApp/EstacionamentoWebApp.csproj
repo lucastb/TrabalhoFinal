@@ -362,6 +362,7 @@
     <Content Include="Views\Manage\Administrativo.cshtml" />
     <Content Include="Views\Administrativo\Index.cshtml" />
     <Content Include="Views\Administrativo\nTicketsPagos.cshtml" />
+    <Content Include="Views\Administrativo\ticketsLiberadoSemPagamento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

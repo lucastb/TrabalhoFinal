@@ -281,11 +281,10 @@ namespace EstacionamentoWebApp.BLL
 
 
 
-        public double valorTotalPago()
+        public double valorTotalPago(IEnumerable<Estacionamento> listaTickets)
         {
             double valor = 0;
-            var list = intcfg.getEstacionamentosQueTemSaida();
-            foreach(Estacionamento est in list)
+            foreach(Estacionamento est in listaTickets)
             {
                 valor = valor + est.valor_pago;
             }

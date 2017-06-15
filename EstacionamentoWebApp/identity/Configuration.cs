@@ -31,7 +31,7 @@ namespace EstacionamentoWebApp.identity
             {
                 UserName = "admin@psa.br",
                 //FullName = "Administrador",
-                PasswordHash = hasher.HashPassword("Pass@word1"),
+                PasswordHash = hasher.HashPassword("senha123"),
                 SecurityStamp = Guid.NewGuid().ToString()
             });        }
     }
