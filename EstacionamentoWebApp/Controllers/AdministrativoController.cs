@@ -15,10 +15,9 @@ namespace EstacionamentoWebApp.Controllers
         [Authorize(Users = "admin@psa.br")]
         public ActionResult Index(string mesEscolhido)
         {
-            var ticket = f.getEstatacionamentosCSaida();
-            var listAux = f.tryme(ticket, mesEscolhido);
+            var listaTotalDeTickets = f.getEstatacionamentosCSaida();
+            var listAux = f.filtraMes(listaTotalDeTickets, mesEscolhido);
             ViewBag.valorT = f.getValorTotalPago();
-
             return View(listAux);
         }
 

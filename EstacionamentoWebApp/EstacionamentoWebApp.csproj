@@ -228,6 +228,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="identity\201706142343473_inicial.cs" />
+    <Compile Include="identity\201706142343473_inicial.Designer.cs">
+      <DependentUpon>201706142343473_inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="identity\Configuration.cs" />
     <Compile Include="Migrations\201705230640293_BancoFuncionando100PorCento.cs" />
     <Compile Include="Migrations\201705230640293_BancoFuncionando100PorCento.Designer.cs">
       <DependentUpon>201705230640293_BancoFuncionando100PorCento.cs</DependentUpon>
@@ -388,6 +393,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="identity\201706142343473_inicial.resx">
+      <DependentUpon>201706142343473_inicial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705230640293_BancoFuncionando100PorCento.resx">
       <DependentUpon>201705230640293_BancoFuncionando100PorCento.cs</DependentUpon>
     </EmbeddedResource>

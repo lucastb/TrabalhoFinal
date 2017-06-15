@@ -160,34 +160,47 @@ namespace EstacionamentoWebApp.BLL
             return clock.getMes(ticket);
                 }
 
-        public int NumeroMesPeloNome(string n)
+        public int numeroMesPeloNome(string nome)
         {
-            return clock.getnMesPorNomeMes(n);
+            return clock.getnMesPorNomeMes(nome);
         }
 
-        //GAMBIARRANEITOR
-        public IEnumerable<Estacionamento> tryme(IEnumerable<Estacionamento> list, string n)
+        public IEnumerable<Estacionamento> filtraMes(IEnumerable<Estacionamento> list, string nomeDoMes)
         {
             List<Estacionamento> aux = new List<Estacionamento>();
-            //int nAux = Int32.Parse(n);
-            if(n != null)
+            if (nomeDoMes != null)
             {
+                if (nomeDoMes.Equals("Todos"))
+                {
+                    return getEstatacionamentosCSaida();
+                }
+                int numeroMes = numeroMesPeloNome(nomeDoMes);
+
                 foreach (Estacionamento est in list)
                 {
-                    if (est.dt_hr_saida.Value.Month == 6)
+                    if (est.dt_hr_saida.Value.Month == numeroMes)
                     {
                         aux.Add(est);
                     }
                 }
                 return aux;
-
-            }else
+            }
+            else
             {
                 return list;
             }
-
         }
 
+        //FAZER
+        public IEnumerable<Estacionamento> filtrarPeloDia(IEnumerable<Estacionamento> listaDeTickets, string dia)
+        {
+            List<Estacionamento> aux = new List<Estacionamento>();
+            if(dia != null)
+            {
+                
+            }
+
+        }
         //public int dia(DateTime dt)
         //{
         //    return clock.getDia(dt);

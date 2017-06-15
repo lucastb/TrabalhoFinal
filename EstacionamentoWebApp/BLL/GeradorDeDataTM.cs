@@ -73,6 +73,44 @@ namespace EstacionamentoWebApp.BLL
             return list;
         }
 
+        public bool diaValidoParaDadoMes(string dia, string mesEscolhido)
+        {
+            int numeroMes = getnMesPorNomeMes(mesEscolhido);
+            int diaConvertido = Int32.Parse(dia);
+            if(numeroMes == 1 || numeroMes ==  3 || numeroMes == 5 || numeroMes == 7 || numeroMes == 8|| numeroMes == 10 || numeroMes == 12)
+            {
+                if(diaConvertido < 32)
+                {
+                    return true;
+                }
+                return false;
+
+            }
+            else if(numeroMes == 4 || numeroMes == 6 || numeroMes == 9 || numeroMes == 11)
+            {
+                if(diaConvertido < 31)
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                if(numeroMes == 2)
+                {
+                    if(diaConvertido < 30)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+
         public int getMes(DateTime? dt)
         {
             int aux = dt.Value.Month;

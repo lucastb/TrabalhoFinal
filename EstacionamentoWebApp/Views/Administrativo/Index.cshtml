@@ -5,33 +5,61 @@
 
 <h1>Valor Total</h1>
 
-@*@using (Html.BeginForm())
-{
-    <p>
-        Find by title: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
-        Select Data de Saída: @Html.DropDownList("SelectedDate", "All")
-        <input type="submit" value="Filter" />
-    </p>
-}*@
-
 <form action="/Administrativo/Index">
-    <select class="form-control" required name="mesEscolhido">
-        <option>Todos</option>
-        <option>Janeiro</option>
-        <option>Fevereiro</option>
-        <option>Março</option>
-        <option>Abril</option>
-        <option>Maio</option>
-        <option>Junho</option>
-        <option>Julho</option>
-        <option>Agosto</option>
-        <option>Setembro</option>
-        <option>Outubro</option>
-        <option>Novembro</option>
-        <option>Dezembro</option>
-    </select>
-    <center>  <input type="submit" class="btn btn-primary" value="Filtrar"></center>
+    <p>
+        <select class="form-control" required name="mesEscolhido">
+            <option>Todos</option>
+            <option>Janeiro</option>
+            <option>Fevereiro</option>
+            <option>Março</option>
+            <option>Abril</option>
+            <option>Maio</option>
+            <option>Junho</option>
+            <option>Julho</option>
+            <option>Agosto</option>
+            <option>Setembro</option>
+            <option>Outubro</option>
+            <option>Novembro</option>
+            <option>Dezembro</option>
+        </select>
+        <br />
+        <select class="form-control" required name="mesEscolhido">
+            <option>Todos</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
+            <option>21</option>
+            <option>22</option>
+            <option>23</option>
+            <option>24</option>
+            <option>25</option>
+            <option>26</option>
+            <option>27</option>
+            <option>28</option>
+            <option>29</option>
+            <option>30</option>
+            <option>31</option>
+        </select>
+
+        <CENTER><input type="submit" class="btn btn-primary" value="Filtrar"></CENTER>
+    </p>
 </form>
 
 
