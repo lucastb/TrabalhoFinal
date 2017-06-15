@@ -68,6 +68,12 @@ namespace EstacionamentoWebApp.Controllers
             {
                 return View("CodInvalidoM");
             }
+            if(f.geTicket(codigo).dt_hr_saida != null)
+            {
+                ViewBag.jaSaiu = "Ticket já deixou o estacionamento";
+                return View("~/Views/Home/JaValidado.cshtml");
+
+            }
             ViewBag.preco = "Valor: R$"+f.precoPagar(codigo);
             return View("TicketPagoNoGuiche");
 
@@ -80,6 +86,13 @@ namespace EstacionamentoWebApp.Controllers
             {
                 return View("CodInvalidoM");
             }
+            if (f.geTicket(codigo).dt_hr_saida != null)
+            {
+                ViewBag.jaSaiu = "Ticket já deixou o estacionamento";
+                return View("~/Views/Home/JaValidado.cshtml");
+
+            }
+
             f.pagaTicket(codigo);
             ViewBag.pago = "Ticket pago!";
             return View("TicketPagoNoGuiche");
@@ -91,6 +104,12 @@ namespace EstacionamentoWebApp.Controllers
             if (f.codExiste(codigo) == false)
             {
                 return View("CodInvalidoM");
+            }
+            if (f.geTicket(codigo).dt_hr_saida != null)
+            {
+                ViewBag.jaSaiu = "Ticket já deixou o estacionamento";
+                return View("~/Views/Home/JaValidado.cshtml");
+
             }
             f.liberaSemPagar(codigo, motivo);
             ViewBag.liberado = "Ticket liberado para saída";
@@ -146,7 +165,9 @@ namespace EstacionamentoWebApp.Controllers
         [Authorize(Users = "admin@psa.br")]
         public ActionResult ticketsLiberadoSemPagamento()
         {
-            return View("~/Views/Administrativo/ticketsLiberadoSemPagamento.cshtml");
+            var ticket = f.getTicketsNPagos();
+            ViewBag.qntd = ticket.Count();
+            return View("~/Views/Administrativo/ticketsLiberadoSemPagamento.cshtml", ticket);
         }
 
 

@@ -65,6 +65,10 @@ namespace EstacionamentoWebApp.BLL
 
         public int validarTicketParaSaida(string cod)
         {
+            if(geTicket(cod).dt_hr_saida != null)
+            {
+                return 7;
+            }
             var resultadoValidacao = cancSaida.liberaSaida(cod);
             return resultadoValidacao;
         }
@@ -216,7 +220,7 @@ namespace EstacionamentoWebApp.BLL
             {
                 if (nomeDoMes.Equals("Todos"))
                 {
-                    return getTicketsPagos();
+                    return list;
                 }
                 int numeroMes = numeroMesPeloNome(nomeDoMes);
 
@@ -242,7 +246,7 @@ namespace EstacionamentoWebApp.BLL
             {
                 if (dia.Equals("Todos"))
                 {
-                    return getTicketsPagos();
+                    return listaDeTickets;
                 }
                 int nDia = Int32.Parse(dia);
                 foreach(Estacionamento est in listaDeTickets)
@@ -259,10 +263,6 @@ namespace EstacionamentoWebApp.BLL
             }
 
         }
-        //public int dia(DateTime dt)
-        //{
-        //    return clock.getDia(dt);
-        //}
 
         public int nDeTicketsPagosTotal(IEnumerable<Estacionamento> est)
         {
@@ -273,6 +273,20 @@ namespace EstacionamentoWebApp.BLL
         {
             return intCfg.getNTotalDeTicketsPagos();
         }
+
+        public IEnumerable<Estacionamento> getTicketsNPagos()
+        {
+            var aux = getEstatacionamentosCSaida();
+            return intCfg.getEstacionamentosSemPagamento(aux);
+        }
+
+        public int getNumeroDeTicketsSairamSemPagar()
+        {
+            return intCfg.numeroTicketsLiberadosSemPagamento();
+        }
+
+
+
 
 
         #endregion

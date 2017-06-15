@@ -33,9 +33,13 @@ namespace EstacionamentoWebApp.Controllers
         }
 
         [Authorize(Users = "admin@psa.br")]
-        public ActionResult ticketsLiberadoSemPagamento()
+        public ActionResult ticketsLiberadoSemPagamento(string mesEscolhido, string diaEscolhido)
         {
-            return View();
+            var listaNPaga = f.getTicketsNPagos();
+            var listAux = f.filtrar(listaNPaga, diaEscolhido, mesEscolhido);
+            ViewBag.qntd = f.nDeTicketsPagosTotal(listAux);
+
+            return View(listAux);
         }
 
 

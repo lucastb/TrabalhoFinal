@@ -161,6 +161,9 @@ namespace EstacionamentoWebApp.Controllers
                 case 5:
                     return View("~/Views/CancelaEntrada/Fechado.cshtml");
 
+                case 7:
+                    ViewBag.jaSaiu = "Ticket já deixou o estacionamento";
+                    return View("JaValidado");
             }
             return View("~/Views/CancelaSaida/Erro.cshtml");
         }

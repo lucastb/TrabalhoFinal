@@ -52,6 +52,7 @@ namespace EstacionamentoWebApp.BLL
 
             if(est.GetEstacionamentoByID(cod).CodEspecial != null)
             {
+                //if(ticket.dt_hr_saida != )
                 if (ticket.Liberado == true)
                 {
                     est.mudarHoraDeSaida(ticket, DateTime.ParseExact(datador.now(), "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US")));
@@ -70,8 +71,8 @@ namespace EstacionamentoWebApp.BLL
                     string motivo = "Cortesia";
                     est.modificarValorAPagar(ticket, valor);
                     est.liberacaoEspecial(ticket, motivo);
-                    est.mudarHoraDeSaida(ticket, DateTime.Parse(datador.now(), new CultureInfo("en-US")));
-                    est.liberaTicket(ticket);
+                    est.mudarHoraDeSaida(ticket, DateTime.ParseExact(datador.now(), "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US")));
+                est.liberaTicket(ticket);
                     return 2;
                 }
             return 4;

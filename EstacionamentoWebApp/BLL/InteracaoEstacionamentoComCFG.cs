@@ -129,7 +129,7 @@ namespace EstacionamentoWebApp.BLL
             return estDAO.getEstacionamentos();
         }
 
-#region parte administrativa
+        #region parte administrativa
         //O sistema deve possuir também um módulo gerencial que permita obter as seguintes informações relativas ao uso
         //do estacionamento:
 
@@ -214,6 +214,8 @@ namespace EstacionamentoWebApp.BLL
             int qntd = getEstacionamentosSemPagamento(getEstacionamentosQueTemSaida()).Count();
             return qntd;
         }
+
+
 
         #endregion
     }
