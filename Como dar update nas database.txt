@@ -1,0 +1,3 @@
+Usar os dois comandos
+update-database -ConfigurationTypeName EstacionamentoWebApp.Migrations.Configuration
+update-database -ConfigurationTypeName EstacionamentoWebApp.identity.ConfigurationIdentity
