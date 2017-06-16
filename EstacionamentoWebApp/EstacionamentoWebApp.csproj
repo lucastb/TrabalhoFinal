@@ -56,12 +56,24 @@
     <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -210,6 +222,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BLL\BarCodeGeneratorTM.cs" />
     <Compile Include="BLL\CalculadorDePrecos.cs" />
     <Compile Include="BLL\Cancela.cs" />
@@ -222,9 +235,11 @@
     <Compile Include="BLL\IntercaoMotivos.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministrativoController.cs" />
+    <Compile Include="Controllers\FacadeAPIController.cs" />
     <Compile Include="Controllers\GuicheController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PrecoAPIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -261,8 +276,13 @@
     <Compile Include="Migrations\201705310657093_MotivoLiberacao.Designer.cs">
       <DependentUpon>201705310657093_MotivoLiberacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706160003169_remocaoUsuario.cs" />
+    <Compile Include="Migrations\201706160003169_remocaoUsuario.Designer.cs">
+      <DependentUpon>201706160003169_remocaoUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FacadeAPI.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -280,13 +300,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\BarcodeRender.exe" />
-    <Content Include="Models\Zen.Barcode.Core.dll" />
-    <Content Include="Models\Zen.Barcode.Design.dll" />
-    <Content Include="Models\Zen.Barcode.SSRS.Design.dll" />
-    <Content Include="Models\Zen.Barcode.SSRS.dll" />
-    <Content Include="Models\Zen.Barcode.Web.dll" />
-    <Content Include="Models\Zen.Barcode.Web.Mvc.dll" />
+    <Content Include="BarCodeLibrary\BarcodeRender.exe" />
+    <Content Include="BarCodeLibrary\Zen.Barcode.Core.dll" />
+    <Content Include="BarCodeLibrary\Zen.Barcode.Design.dll" />
+    <Content Include="BarCodeLibrary\Zen.Barcode.SSRS.Design.dll" />
+    <Content Include="BarCodeLibrary\Zen.Barcode.SSRS.dll" />
+    <Content Include="BarCodeLibrary\Zen.Barcode.Web.dll" />
+    <Content Include="BarCodeLibrary\Zen.Barcode.Web.Mvc.dll" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -367,6 +387,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\API\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -417,6 +438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705310657093_MotivoLiberacao.resx">
       <DependentUpon>201705310657093_MotivoLiberacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706160003169_remocaoUsuario.resx">
+      <DependentUpon>201706160003169_remocaoUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

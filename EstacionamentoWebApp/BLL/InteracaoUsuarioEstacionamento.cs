@@ -9,11 +9,9 @@ namespace EstacionamentoWebApp.BLL
 {
     public class InteracaoUsuarioEstacionamento
     {
-        UsuarioDAOImpl userDAO;
         EstacionamentoDAOImpl  estDAO;
         public InteracaoUsuarioEstacionamento()
         {
-            userDAO = new UsuarioDAOImpl();
             estDAO = new EstacionamentoDAOImpl();
         }
 
