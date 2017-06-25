@@ -315,8 +315,6 @@
     <Content Include="fonts\fre3of9x.ttf" />
     <Content Include="fonts\free3of9.ttf" />
     <Content Include="fonts\code128.ttf" />
-    <Content Include="ClassDiagram1.cd" />
-    <Content Include="ClassDiagram2.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
