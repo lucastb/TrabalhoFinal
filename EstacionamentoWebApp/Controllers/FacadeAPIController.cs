@@ -15,10 +15,10 @@ namespace EstacionamentoWebApp.Controllers
 
         //GET
         //[Route("api/FacadeAPI/qntd")]
-        public int getQuantidadeVagasDisp()
+        public string getQuantidadeVagasDisp()
         {
             var qntd = f.nDeVagasDisponiveis();
-            return qntd;
+            return qntd.ToString() + " vagas disponíveis";
         }
 
 

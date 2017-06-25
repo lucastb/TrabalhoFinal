@@ -5,6 +5,9 @@ using System;
 using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Zen.Barcode;
@@ -26,6 +29,17 @@ namespace EstacionamentoWebApp.Controllers
             ViewBag.qntd = num;
             
             return View();
+        }
+
+        //API
+        public ActionResult getValorDeVagasPelaAPI()
+        {
+            return Redirect("/api/FacadeAPi");
+        }
+
+        public ActionResult buscarTicketAPi(string cod)
+        {
+            return Redirect("/api/PrecoAPI/" + cod);            
         }
 
         //OK
