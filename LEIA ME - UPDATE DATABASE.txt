@@ -1,7 +1,0 @@
-Usar os dois comandos:
-
-BASE DE DADOS NECESSÁRIA PARA RODAR APLICAÇÃO
-update-database -ProjectName EstacionamentoWebApp -ConfigurationTypeName EstacionamentoWebApp.Migrations.Configuration
-
-USUÁRIOS
-update-database -ProjectName EstacionamentoWebApp -ConfigurationTypeName EstacionamentoWebApp.identity.ConfigurationIdentity
