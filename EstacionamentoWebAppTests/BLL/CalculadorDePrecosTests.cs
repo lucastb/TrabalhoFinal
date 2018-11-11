@@ -17,13 +17,8 @@ namespace EstacionamentoWebApp.BLL.Tests
     {
         Facade f = new Facade();
         CalculadorDePrecos calcP = new CalculadorDePrecos();
-        InteracaoEstacionamentoComCFG intcfg = new InteracaoEstacionamentoComCFG();
         EstacionamentoDAOImpl estDAO = new EstacionamentoDAOImpl();
         Cancela cancela = new Cancela();
-
-
-
-
 
         #region Calcular preço
         [TestMethod()]
