@@ -164,6 +164,11 @@ namespace PL.DAO
             return vagas;
         }
 
+        public void SaveChanges()
+        {
+            context.SaveChanges();
+        }
+
         
     }
 }
