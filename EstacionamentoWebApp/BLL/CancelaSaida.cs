@@ -17,30 +17,30 @@ namespace EstacionamentoWebApp.BLL
 
 
         public CancelaSaida()
-            {
-                calc = new CalculadorDePrecos();
-                est = new EstacionamentoDAOImpl();
-                datador = new GeradorDeDataTM();
-                estcfg = new InteracaoEstacionamentoComCFG();
-                im = new IntercaoMotivos();
-            }
+        {
+            calc = new CalculadorDePrecos();
+            est = new EstacionamentoDAOImpl();
+            datador = new GeradorDeDataTM();
+            estcfg = new InteracaoEstacionamentoComCFG();
+            im = new IntercaoMotivos();
+        }
 
-            public int liberaSaida(string cod)
-            {
+        public int liberaSaida(string cod)
+        {
 
-            if(estcfg.aberto() == false)
+            if (estcfg.aberto() == false)
             {
                 return 5;
             }
 
-              if(estcfg.codExiste(cod) == false)
+            if (estcfg.codExiste(cod) == false)
             {
                 return 0;
             }
 
             var ticket = est.GetEstacionamentoByID(cod);
 
-            if(im.temAtivado() == true)
+            if (im.temAtivado() == true)
             {
                 var motivo = im.motivo();
                 est.liberacaoEspecial(ticket, motivo);
@@ -50,36 +50,42 @@ namespace EstacionamentoWebApp.BLL
                 return -1;
             }
 
-            if(est.GetEstacionamentoByID(cod).CodEspecial != null)
+            if (est.GetEstacionamentoByID(cod).CodEspecial != null)
             {
                 //if(ticket.dt_hr_saida != )
                 if (ticket.Liberado == true)
                 {
                     est.mudarHoraDeSaida(ticket, DateTime.ParseExact(datador.now(), "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US")));
                     return 1;
-                }else { return 3; }
-            }else if (calc.checaCortesia(cod) == false){
+                }
+                else { return 3; }
+            }
+            else if (calc.checaCortesia(cod) == false)
+            {
 
-                if(ticket.Liberado == true)
+                if (ticket.Liberado == true)
                 {
                     est.mudarHoraDeSaida(ticket, DateTime.ParseExact(datador.now(), "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US")));
                     return 1;
 
-                }else if(ticket.Liberado == false) {return 3;}
-                }else{
-                    double valor = 0.0;
-                    string motivo = "Cortesia";
-                    est.modificarValorAPagar(ticket, valor);
-                    est.liberacaoEspecial(ticket, motivo);
-                    est.mudarHoraDeSaida(ticket, DateTime.ParseExact(datador.now(), "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US")));
-                est.liberaTicket(ticket);
-                    return 2;
                 }
-            return 4;
+                else if (ticket.Liberado == false) { return 3; }
             }
-
-       
+            else
+            {
+                double valor = 0.0;
+                string motivo = "Cortesia";
+                est.modificarValorAPagar(ticket, valor);
+                est.liberacaoEspecial(ticket, motivo);
+                est.mudarHoraDeSaida(ticket, DateTime.ParseExact(datador.now(), "MM-dd-yyyy HH:mm:ss", new CultureInfo("en-US")));
+                est.liberaTicket(ticket);
+                return 2;
+            }
+            return 4;
         }
-      }
-    
+
+
+    }
+}
+
 

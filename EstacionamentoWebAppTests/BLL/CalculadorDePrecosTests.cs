@@ -68,7 +68,7 @@ namespace EstacionamentoWebApp.BLL.Tests
             Assert.AreEqual(false, boo);
             double preco = calcP.valorTicketSemPernoite(cod);
             //até 3 horas
-            Assert.AreEqual(5, preco);           
+            Assert.AreEqual(5, preco);
         }
 
         [TestMethod()]
@@ -86,6 +86,8 @@ namespace EstacionamentoWebApp.BLL.Tests
             //até 3 horas
             Assert.AreEqual(20, preco);
         }
+
+        
     }
 }
 
